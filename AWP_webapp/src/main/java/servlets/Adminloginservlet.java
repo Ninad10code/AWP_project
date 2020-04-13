@@ -11,17 +11,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dataservices.Professionalservices;
-import java.util.*;
-import datapack.Professionals;
+import dataservices.Adminservices;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author kumar
  */
-public class GetAllProfessionalsServlet extends HttpServlet {
+public class Adminloginservlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,24 +35,32 @@ public class GetAllProfessionalsServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String val = request.getParameter("value");
+        Adminservices ad = new Adminservices();
         
-        Professionalservices profserv = new Professionalservices();
-        ArrayList<Professionals> proflist = new  ArrayList<Professionals>();
+        String name = request.getParameter("name");
+        String password = request.getParameter("pass");
+        ServletContext context = getServletContext();
         
-        if(val.equals("default"))
-        {    
-            proflist = (ArrayList<Professionals>)profserv.getProfessionalsList();
+        if(ad.login(name,password))
+        {
+           
+            HttpSession session = request.getSession(true);
+            session.setAttribute("username", name);
+            session.setMaxInactiveInterval(30*60);
+       
+           RequestDispatcher dispatcher = context.getRequestDispatcher("/adminhomepage.jsp");
+               dispatcher.forward(request,response);
         }
         else
         {
-            proflist = (ArrayList<Professionals>)profserv.getProfessinalsByProfession(val);
-        }    
-        request.setAttribute("proflist", proflist);
-          
-        ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher("/profdetails.jsp");
-        dispatcher.forward(request,response);
+             request.setAttribute("message","login Unsuccesfull try again");
+             RequestDispatcher dispatcher = context.getRequestDispatcher("/indexAdmin.jsp");
+               dispatcher.forward(request,response);
+        }
+        
+    
+     
+        
        
     }
 

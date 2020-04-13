@@ -10,8 +10,49 @@
 
 <jsp:include page="header.jsp"/> 
 
+<script>
+    
+    var val;
+    
+    function loadDoc(val) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+         document.getElementById("ajax").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("GET", "/AWP_webapp/getprofessionals?value="+val, true);
+      xhttp.send();
+    }
+</script>
 <br>
 <br>
+
+<div class="container-fluid row">
+    
+    <div class="col-sm-9">
+        
+    </div>   
+    
+    <div class="col-sm-3">
+
+<form action=""> 
+    
+  <p> Filter by profession :<p/> 
+  <select name="profesionals" class="form-control" onchange="loadDoc(this.value)">
+    <option value="default">Select a profession:</option>
+    <option value="maid">maid</option>
+    <option value="plumber">plumber</option>
+    <option value="salon">salon</option>
+  </select>
+</form>
+     
+    </div>     
+<br>
+
+</div>
+
+
 
 <div class="container-fluid">    
     <table class="table table-hover">

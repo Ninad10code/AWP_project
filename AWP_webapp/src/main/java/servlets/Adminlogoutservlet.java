@@ -7,21 +7,19 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import dataservices.Professionalservices;
-import java.util.*;
-import datapack.Professionals;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author kumar
  */
-public class GetAllProfessionalsServlet extends HttpServlet {
+public class Adminlogoutservlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,25 +34,18 @@ public class GetAllProfessionalsServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String val = request.getParameter("value");
+        HttpSession session = request.getSession(false);
+        session.removeAttribute("username");
+            
+         ServletContext context = getServletContext();
+         request.setAttribute("logoutmessage","successfully logged out");
+         RequestDispatcher dispatcher = context.getRequestDispatcher("/indexAdmin.jsp");
+         dispatcher.forward(request,response);
         
-        Professionalservices profserv = new Professionalservices();
-        ArrayList<Professionals> proflist = new  ArrayList<Professionals>();
         
-        if(val.equals("default"))
-        {    
-            proflist = (ArrayList<Professionals>)profserv.getProfessionalsList();
-        }
-        else
-        {
-            proflist = (ArrayList<Professionals>)profserv.getProfessinalsByProfession(val);
-        }    
-        request.setAttribute("proflist", proflist);
-          
-        ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher("/profdetails.jsp");
-        dispatcher.forward(request,response);
-       
+      
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
