@@ -14,9 +14,10 @@
     <body>
         <h1>Hello World!</h1>
            <div id="result">
-            <h3>${message}</h3>
-             <h3>${name}</h3>
-              <h3>${path}</h3>
+            <h3>${error_message}</h3>
+             <h3>${success_message}</h3>
+             <h3>${name}</h3>       
+             <h3>${path}</h3>
         </div>
     </body>
 </html>

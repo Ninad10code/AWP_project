@@ -24,6 +24,26 @@
         <servlet-name>Adminlogoutservlet</servlet-name>
         <servlet-class>servlets.Adminlogoutservlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Userregisterservlet</servlet-name>
+        <servlet-class>servlets.Userregisterservlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>userloginservlet</servlet-name>
+        <servlet-class>servlets.userloginservlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>userservicesservlet</servlet-name>
+        <servlet-class>servlets.userservicesservlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Bookserviceservlet</servlet-name>
+        <servlet-class>servlets.Bookserviceservlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Allotprofessionalservlet</servlet-name>
+        <servlet-class>servlets.Allotprofessionalservlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetAllProfessionalsServlet</servlet-name>
         <url-pattern>/getprofessionals</url-pattern>
@@ -47,6 +67,26 @@
     <servlet-mapping>
         <servlet-name>Adminlogoutservlet</servlet-name>
         <url-pattern>/adminlogoutservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Userregisterservlet</servlet-name>
+        <url-pattern>/userregisterservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userloginservlet</servlet-name>
+        <url-pattern>/userloginservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>userservicesservlet</servlet-name>
+        <url-pattern>/userservicesservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Bookserviceservlet</servlet-name>
+        <url-pattern>/bookserviceservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Allotprofessionalservlet</servlet-name>
+        <url-pattern>/allotprofessionalservlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

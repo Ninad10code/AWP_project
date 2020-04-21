@@ -39,13 +39,10 @@ public class Adminlogoutservlet extends HttpServlet {
             
          ServletContext context = getServletContext();
          request.setAttribute("logoutmessage","successfully logged out");
-         RequestDispatcher dispatcher = context.getRequestDispatcher("/indexAdmin.jsp");
+         RequestDispatcher dispatcher = context.getRequestDispatcher("/indexuser.jsp");
          dispatcher.forward(request,response);
         
-        
       
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
