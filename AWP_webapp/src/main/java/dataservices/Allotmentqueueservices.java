@@ -8,6 +8,7 @@ package dataservices;
 import datapack.Allotmentqueue;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -69,7 +70,69 @@ public class Allotmentqueueservices {
     }
     
     
-    
+  public void pop(Allotmentqueue aq)
+  {
+      try{
+            
+             
+                String id = Integer.toString(aq.getProfessional_id());
+             
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+                 String sql = "Delete FROM allotmentqueue WHERE professional_id="+id;
+                Statement pstmt = conn.createStatement();
+                pstmt.executeUpdate(sql);
+            
+               
+                }
+           
+                catch(Exception e)
+                {
+                    System.out.println("failure in connection");
+                }
+         
+  
+  
+  }
+  
+  
+  public void push(Allotmentqueue aq)
+  {
+      
+      try
+        {
+            
+              
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+
+
+            String query = "insert into allotmentqueue values (?,?);";
+
+            PreparedStatement pstmt = conn.prepareStatement(query);
+           
+            pstmt.setString(1,Integer.toString(aq.getProfessional_id()));
+            pstmt.setString(2,Integer.toString(aq.getService_id()));
+          
+         
+            
+            
+            pstmt.executeUpdate();
+            
+           
+            
+        } 
+        catch(Exception e)
+        {
+            System.out.println("Error");
+            
+        }
+        
+       
+      
+  
+  }
+  
     
     
     

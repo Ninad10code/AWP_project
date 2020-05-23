@@ -35,6 +35,8 @@ public class Allotprofessionalservlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+        
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -50,22 +52,39 @@ public class Allotprofessionalservlet extends HttpServlet {
         
         
          aq = aqserv.getTopProfessinal(service_id);
-        ;
          int prof_id = aq.getProfessional_id();
          
          
-         serv =sserv.getServicesByServiceId(service_id);
- 
-         prof = pserv.getProfessinalsById(Integer.toString(prof_id));
+         if(aq!=null)
+         {    
+
+            
+             aqserv.pop(aq);
+
+             serv =sserv.getServicesByServiceId(service_id);
+
+             prof = pserv.getProfessinalsById(Integer.toString(prof_id));
+             
+
+             request.setAttribute("prof",prof );
+             request.setAttribute("serv",serv);
+
+
+             ServletContext context = getServletContext();
+             RequestDispatcher dispatcher = context.getRequestDispatcher("/bookingreceipt.jsp");
+             dispatcher.forward(request,response);
+
+         }
+         else
+         {   
+             
+             request.setAttribute("error_message","Sorry!,Currently no professional is free");
+             ServletContext context = getServletContext();
+             RequestDispatcher dispatcher = context.getRequestDispatcher("/confirmbooking.jsp");
+             dispatcher.forward(request,response);
          
-         request.setAttribute("prof",prof );
-         request.setAttribute("serv",serv);
-        
-        
-         ServletContext context = getServletContext();
-         RequestDispatcher dispatcher = context.getRequestDispatcher("/bookingreceipt.jsp");
-         dispatcher.forward(request,response);
-        
+         }
+         
         
         
         

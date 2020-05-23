@@ -6,8 +6,10 @@
 package dataservices;
 import datapack.Packages;
 import datapack.Services;
+import datapack.Users;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -100,8 +102,7 @@ public class Serviceservices {
                         serv.setImage_url(rs.getString(5));
                         serv.setPackage_id(Integer.parseInt(rs.getString(6)));
                         
-                       
-                        
+                           
                     }
                 
                
@@ -115,16 +116,46 @@ public class Serviceservices {
            return serv;
         
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+     
+     
+     
+      public boolean register_service(Services serv)
+    { 
+      
+        
+        try
+        {
+            
+              
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+
+
+            String query = "insert into services(name, price, description, image_url, package_id) values (?,?,?,?,?);";
+
+            PreparedStatement pstmt = conn.prepareStatement(query);
+           
+          
+            pstmt.setString(1,serv.getName());
+            pstmt.setString(2,Integer.toString(serv.getPrice()));
+            pstmt.setString(3,serv.getDescription());
+            pstmt.setString(4,serv.getImage_url());
+            pstmt.setString(5,Integer.toString(serv.getPackage_id()));
+           
+            pstmt.executeUpdate();
+            
+            return true;
+            
+        } 
+        catch(Exception e)
+        {
+            System.out.println("Error");
+            
+        }
+        
+        return false;
+        
+    }     
     
     
 }

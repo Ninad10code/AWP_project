@@ -49,7 +49,7 @@
             <div class="card">
              <div class="card-header bg-primary text-white">Packages</div>
              <div class="card-body">View and modify the service packages</div> 
-             <div class="card-footer card bg-info text-white"><a href="/AWP_webapp/getallusers" class="text-white">Select</a></div>
+             <div class="card-footer card bg-info text-white"><a href="/AWP_webapp/getallpackagesservlet" class="text-white">Select</a></div>
            </div>
          
         </div>    

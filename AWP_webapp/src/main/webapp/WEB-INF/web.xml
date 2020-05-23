@@ -44,6 +44,14 @@
         <servlet-name>Allotprofessionalservlet</servlet-name>
         <servlet-class>servlets.Allotprofessionalservlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RateServlet</servlet-name>
+        <servlet-class>servlets.RateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Getallpackagesservlet</servlet-name>
+        <servlet-class>servlets.Getallpackagesservlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetAllProfessionalsServlet</servlet-name>
         <url-pattern>/getprofessionals</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>Allotprofessionalservlet</servlet-name>
         <url-pattern>/allotprofessionalservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RateServlet</servlet-name>
+        <url-pattern>/givereview</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Getallpackagesservlet</servlet-name>
+        <url-pattern>/getallpackagesservlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

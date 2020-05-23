@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import datapack.Services;
+import dataservices.Serviceservices;
 /**
  *
  * @author kumar
@@ -32,7 +35,8 @@ public class fileuploadservlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * 
      */
-    private final String UPLOAD_DIRECTORY = "C:/uploads";
+    private final String UPLOAD_DIRECTORY = "C:/Users/kumar/Desktop/JSP_WEBAPP/JSP_WEBAPP/AWP_webapp/src/main/webapp/images";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -65,6 +69,12 @@ public class fileuploadservlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+    Services serv = new Services();
+    Serviceservices s = new Serviceservices();
+    ArrayList<String> l = new ArrayList<String>();
+    
+    String package_id = request.getParameter("package_id");
+    String message = " ";
         
         String name="";
         String path=" ";
@@ -79,12 +89,36 @@ public class fileuploadservlet extends HttpServlet {
                         path = new File(item.getName()).getAbsolutePath();
                         item.write( new File(UPLOAD_DIRECTORY + File.separator + name));
                     }
+                    else{
+                        
+                        String service_name = item.getFieldName();
+                        String service_value = item.getString();           
+                        l.add(service_value);
+                    }
                 }
+                
+                
+                    serv.setName(l.get(0));
+                    serv.setPrice(Integer.parseInt(l.get(1)));
+                    serv.setDescription(l.get(2));
+                    serv.setImage_url("images/"+name);
+                    serv.setPackage_id(Integer.parseInt(package_id));
+                    
+                    if(s.register_service(serv))
+                    {
+                        message = "added sucessfully new service";
+                    }
+                    else
+                    {
+                        message = "failed";
+                    }
+                    
+                
             
+               
                //File uploaded successfully
-               request.setAttribute("message", "File Uploaded Successfully");
-                request.setAttribute("name",name);
-                 request.setAttribute("path",path);
+               request.setAttribute("message",message);
+                
             } catch (Exception ex) {
                request.setAttribute("message", "File Upload Failed due to " + ex);
             }          
@@ -94,7 +128,7 @@ public class fileuploadservlet extends HttpServlet {
                                  "Sorry this Servlet only handles file upload request");
         }
      
-        request.getRequestDispatcher("/result.jsp").forward(request, response);
+        request.getRequestDispatcher("/addnewservice.jsp").forward(request, response);
       
     }        
         

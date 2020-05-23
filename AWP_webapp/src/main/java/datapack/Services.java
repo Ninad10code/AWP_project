@@ -4,19 +4,18 @@
  * and open the template in the editor.
  */
 package datapack;
-
 /**
  *
  * @author kumar
  */
 public class Services {
     
-    int id;
-    String name;
-    int price;
-    String description;
-    String image_url;
-    int package_id;
+    private int id;
+    private String name;
+    private int price;
+    private String description;
+    private String image_url;
+    private int package_id;
 
     public int getId() {
         return id;

@@ -11,9 +11,9 @@ package datapack;
  */
 public class Packages {
     
-    int id;
-    String name;
-    String image_url;
+    private int id;
+    private String name;
+    private String image_url;
 
     public int getId() {
         return id;

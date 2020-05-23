@@ -86,7 +86,7 @@
                 <img class="card-img-top" src=<%=p.getImage_url()%> alt="Cardimage" style="width:match-parent; height:300px">
               <div class="card-body">
                 <h4 class="card-title"><%=p.getName()%></h4>
-                <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                <p class="card-text">Best of the <%=p.getName()%> in industry</p>
                 <a href="/AWP_webapp/userservicesservlet?value=<%=p.getId()%>" class="btn btn-primary">See Details</a>
               </div>
             </div>

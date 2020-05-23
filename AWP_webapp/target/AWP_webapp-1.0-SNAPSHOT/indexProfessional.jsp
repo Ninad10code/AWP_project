@@ -21,7 +21,7 @@
     <main>
         <div class="content">
             <div class="tabs">
-                <a href="indexuser.jsp"><div class="tabsData">User</div></a>
+                <a href="index.jsp"><div class="tabsData">User</div></a>
                 <div class="tabsData" id="current">Professional</div>
                 <a href="indexAdmin.jsp"><div class="tabsData">Admin</div></a>
                 <!-- <br> -->
@@ -30,6 +30,7 @@
             <br>
             </span align="center"><label for="page" id="head">Lets get started</label>
             <br>
+            <form action ="loginprof_servlet" method="post">
             <label for="username">Username</label>
             <input type="text" name="name" id="username" placeholder="Username" required>
             <br>
@@ -37,6 +38,7 @@
             <input type="password" name="pass" id="password" placeholder="Password" required>
             <br>
             <button type="submit">Log in</button>
+            </form>
             <!-- <br>
             <div class="signUP">
                 New to Pro-Serv? Join us here <button>Sign Up</button>
