@@ -52,6 +52,14 @@
         <servlet-name>Getallpackagesservlet</servlet-name>
         <servlet-class>servlets.Getallpackagesservlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Reviewservlet</servlet-name>
+        <servlet-class>servlets.Reviewservlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Listreviewservlet</servlet-name>
+        <servlet-class>servlets.Listreviewservlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetAllProfessionalsServlet</servlet-name>
         <url-pattern>/getprofessionals</url-pattern>
@@ -103,6 +111,14 @@
     <servlet-mapping>
         <servlet-name>Getallpackagesservlet</servlet-name>
         <url-pattern>/getallpackagesservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Reviewservlet</servlet-name>
+        <url-pattern>/Reviewservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Listreviewservlet</servlet-name>
+        <url-pattern>/Listreviewservlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
