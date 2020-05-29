@@ -18,7 +18,7 @@ import datapack.Reviews;
  */
 public class Reviewservices {
     
-     public ArrayList<Reviews> getAllReviews()
+     public ArrayList<Reviews> getAllReviews(String limit)
     {
          ArrayList<Reviews> reviewlist = new ArrayList<Reviews>();
         
@@ -26,7 +26,7 @@ public class Reviewservices {
             
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
-                String sql = "SELECT * FROM reviews ORDER BY id DESC;";
+                String sql = "SELECT * FROM reviews ORDER BY id DESC LIMIT "+limit+";";
             
                 Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(sql);
