@@ -16,8 +16,6 @@ import dataservices.Reviewservices;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
-import org.json.JSONArray;
-import org.json.JSONObject;
 /**
  *
  * @author kumar
@@ -37,14 +35,13 @@ public class Listreviewservlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String limit = request.getParameter("value");
-        
         Reviews re = new Reviews();
         Reviewservices rserv = new Reviewservices();
         
         ArrayList<Reviews> relist = new ArrayList<Reviews>();
-        relist = rserv.getAllReviews(limit);
-              
+        relist = rserv.getAllReviews();
+        
+            
         ServletContext context = getServletContext();
        
         request.setAttribute("reviewlist",relist);

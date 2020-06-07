@@ -6,6 +6,7 @@
 package servlets;
 
 import datapack.Professionals;
+import dataservices.Professionalservices;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -20,6 +21,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -46,46 +48,19 @@ public class LoginProfessional extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String name=request.getParameter("name");
             String password=request.getParameter("pass");
-            /*out.print("<h1>Successfully started process!!!</h1>");
-out.print("<h1>Successfully started process!!!</h1>");*/
-            //out.print("<h1>Successfully started process!!!</h1>");
-            //ProfessionalDAO profdao=new ProfessionalDAO();
-           // public Professionals LoginCheck(String name,String password) throws SQLException,ClassNotFoundException, FileNotFoundException
-    //{
-        /*String jdbcURL = "jdbc:mysql://localhost:3306/proserv";
-        String dbUser = "root";
-        String dbPassword = "Suruchi@2001";*/
         PrintWriter out = response.getWriter();
+        Professionalservices profserv=new Professionalservices();
         Professionals prof;
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
-                //String sql = "SELECT * FROM professionals;";
-            String sql = "SELECT * FROM professionals WHERE name = ? AND password = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, name);
-            statement.setString(2, password);
-            ResultSet result = statement.executeQuery();
-            prof = null;
-            if (result.next()) {
-                prof = new Professionals();
-                prof.setname(result.getString("name"));
-                prof.setpassword(result.getString("password"));
-                prof.setid(Integer.parseInt(result.getString("id")));
-            }
-        
- 
-        //Professionals prof = profdao.LoginCheck(name,password);
+        prof=profserv.login(name, password);
         String destPage="indexProfessional.jsp";
         if(prof!=null)
         {
-            //HttpSession session = request.getSession();
-            //session.setAttribute("professional", prof);
-            out.print("<h1>Successfully logged in!!!</h1>");
+            HttpSession session = request.getSession();
+            session.setAttribute("profname", name);
             Cookie ck=new Cookie("name",name);
             response.addCookie(ck);
             String id;
-                id = Integer.toString(prof.getid());
+            id = Integer.toString(prof.getid()) ;
             request.setAttribute("value",id );
             destPage = "professionalHomePage.jsp";
             RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
@@ -97,12 +72,6 @@ out.print("<h1>Successfully started process!!!</h1>");*/
             dispatcher.include(request, response);
         }
         
-         
-        } 
-        catch(ClassNotFoundException | SQLException  e)
-        {
-            throw new ServletException(e);
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

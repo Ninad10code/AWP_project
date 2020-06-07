@@ -24,7 +24,10 @@
              <div class="card">
              <div class="card-header bg-primary text-white">Applications</div>
              <div class="card-body">View all the professional applications</div> 
-             <div class="card-footer card bg-info text-white"><a href="/AWP_webapp/getallusers" class="text-white">Select</a></div>
+             <div class="card-footer card bg-info text-white"><a href="/AWP_webapp/NewProfessionalsApplications" class="text-white">Select</a>
+             <p style="color:red">${message}</p>
+             </div>
+             
            </div>
          
         </div>    
@@ -40,7 +43,7 @@
              <div class="card-body">See details of all the professionals</div> 
              <div class="card-footer card bg-info text-white"><a href="/AWP_webapp/getprofessionals?value=default" class="text-white">Select</a></div>
            </div>
-         
+           
         </div>    
         
         

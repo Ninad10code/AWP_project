@@ -13,6 +13,7 @@ public class Professionals {
     
     private int id;
     private String name;
+    private String username;
     private String password;
     private String profession;
     private String email;
@@ -23,7 +24,8 @@ public class Professionals {
     private String rating;
     private String salary;
     private String total_services;
-    
+    private String register;
+    private int service_id;
       
     public void setid(int id)
     {
@@ -40,6 +42,14 @@ public class Professionals {
     public String getname()
     {
         return this.name;
+    }
+    public void setusername(String username)
+    {
+        this.username=username;
+    }
+    public String getusername()
+    {
+        return this.username;
     }
      public void setpassword(String password)
     {
@@ -93,7 +103,7 @@ public class Professionals {
     {
         this.status=status;
     }
-    public String getstauts()
+    public String getstatus()
     {
         return this.status;
     }
@@ -121,5 +131,19 @@ public class Professionals {
     {
         return this.total_services;
     }
-      
+    public void approve()
+    {
+        if(this.register.equals("false"))
+        {
+            this.register="true";
+        }
+    }
+    public void setservice_id(int id)
+    {
+        this.service_id=id;
+    }
+    public int getservice_id()
+    {
+        return this.service_id;
+    }
 }

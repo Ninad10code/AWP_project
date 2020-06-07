@@ -6,6 +6,7 @@
 package dataservices;
 
 import datapack.Admin;
+import java.io.PrintWriter;
 import java.util.*;
 import java.sql.*;
 
@@ -20,9 +21,8 @@ public class Adminservices {
      try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
                 String sql = "SELECT * FROM admins;";
-            
             
                 Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(sql);
@@ -36,6 +36,7 @@ public class Adminservices {
                        
                        if(ad.getname().equals(name) && ad.getpassword().equals(password))
                        {
+                           
                            return true;
                        }
                        
@@ -55,8 +56,6 @@ public class Adminservices {
            
        
    }
-    
-    
     
     
     

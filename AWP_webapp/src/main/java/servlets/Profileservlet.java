@@ -37,7 +37,12 @@ public class Profileservlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String id = request.getParameter("value");
+        String id = request.getAttribute("value").toString();
+        if(id.equals(null))
+        {
+            id = request.getParameter("value");
+        }
+        PrintWriter out = response.getWriter();
         Professionalservices profserv = new Professionalservices();
         Professionals prof = new Professionals();
         
@@ -47,7 +52,7 @@ public class Profileservlet extends HttpServlet {
         request.setAttribute("prof", prof);  
         ServletContext context = getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/professionalprofilepage.jsp");
-        dispatcher.forward(request,response);
+        dispatcher.include(request,response);
        
         
         

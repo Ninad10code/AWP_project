@@ -5,6 +5,8 @@
  */
 package servlets;
 
+import datapack.Professionals;
+import dataservices.Professionalservices;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -38,10 +40,10 @@ public class updateProfDetails extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+            
                 String id=request.getParameter("id");
                 String name=request.getParameter("name");
+                String username=request.getParameter("username");
                 String password=request.getParameter("password");
                 String profession=request.getParameter("profession");
                 String email=request.getParameter("email");
@@ -49,24 +51,20 @@ public class updateProfDetails extends HttpServlet {
                 String address=request.getParameter("address");
                 String gender=request.getParameter("gender");
                 String status=request.getParameter("status");
-                if(id!=null)
-                {
-                    PreparedStatement ps;
-                    String sql="Update professionals set id=?,name=?,password=?,profession=?,email=?,mob_no=?,address=?,gender=?,status=? where id="+id;
-                    ps = conn.prepareStatement(sql);
-                    ps.setString(1,id);
-                    ps.setString(2,name);
-                    ps.setString(3,password);
-                    ps.setString(4,profession);
-                    ps.setString(5, email);
-                    ps.setString(6, mob_no);
-                    ps.setString(7, address);
-                    ps.setString(8, gender);
-                    ps.setString(9, status);
-                    int i = ps.executeUpdate();
-                    if(i > 0)
+                Professionals prof=new Professionals();
+                prof.setid(Integer.parseInt(id));
+                prof.setname(name);
+                prof.setusername(username);
+                prof.setpassword(password);
+                prof.setprofession(profession);
+                prof.setemail(email);
+                prof.setmob_no(mob_no);
+                prof.setaddress(address);
+                prof.setgender(gender);
+                prof.setstatus(status);
+                Professionalservices profserv = new Professionalservices();
+                    if( profserv.UpdateDetails(prof))
                     {
-                    out.print("<h1>Record Updated Successfully</h1><br>");
                     request.setAttribute("value",id );
                     request.getRequestDispatcher("professionalHomePage.jsp").forward(request, response);
                     }
@@ -74,12 +72,12 @@ public class updateProfDetails extends HttpServlet {
                     {
                     out.print("<h1>There is a problem in updating Record.</h1>");
                     }
-                }
+                //}
                 
         }
-        catch(ClassNotFoundException | SQLException e)
+        catch(Exception e)
         {
-            throw new ServletException(e);
+            e.printStackTrace();
         }
     }
 

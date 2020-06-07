@@ -12,6 +12,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import dataservices.Adminservices;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -43,13 +48,10 @@ public class Adminloginservlet extends HttpServlet {
         
         if(ad.login(name,password))
         {
-           
+           PrintWriter out=response.getWriter();
             HttpSession session = request.getSession(true);
             session.setAttribute("username", name);
             session.setMaxInactiveInterval(30*60);
-       
-           RequestDispatcher dispatcher = context.getRequestDispatcher("/adminhomepage.jsp");
-               dispatcher.forward(request,response);
         }
         else
         {

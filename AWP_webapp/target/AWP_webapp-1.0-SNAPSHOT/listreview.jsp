@@ -9,40 +9,6 @@
 <%@page import="java.util.List" %>
 <jsp:include page="header.jsp"/>
 
-<script>
-    
-    var val = 3;
-    
-    loadDoc(val);
-  
-    window.onscroll = function() {myFunction()};
-
-          
-       function myFunction()
-        {
-            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-              
-               setTimeout(loadDoc,2000);
-               
-             }
-        }
-        
-    function loadDoc() {
-          
-        var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState === 4 && this.status === 200) {
-         document.getElementById("ajax").innerHTML = this.responseText;
-        }
-      };
-      xhttp.open("GET", "/AWP_webapp/Listreviewservlet?value="+val, true);
-      xhttp.send(); 
-      val+=3;
-      
-      
-    }
-</script>
-
 <style>
     
     img{
@@ -74,12 +40,6 @@
         transform: scale(1.008);
         box-shadow: 1px 1px 1px 1px grey;
     }
-    
-    #loader{
-        
-        display: none;
-    }
-    
 </style>    
     <br>
     <br>
@@ -89,6 +49,8 @@
         <h4>Reviews</h4>
     </div>
     <br>
+  
+
         <%
             List<Reviews> reviewlist = (List<Reviews>)request.getAttribute("reviewlist");
             
@@ -96,7 +58,7 @@
             {
              
         %>
-        
+       
             <div class="card p-2">
               <div class="card-body">
                 
@@ -127,19 +89,14 @@
               </div>
             </div>
             
-     
+      
        
         <%
             }
             
          %>  
-         <br/>
-         <div style="text-align:center">
-             <div class="spinner-border text-success"></div>
-             <p>Loading..</p>
-         </div>
-       
+         
     </div>     
-  
+        
 
 <jsp:include page="footer.jsp"/>

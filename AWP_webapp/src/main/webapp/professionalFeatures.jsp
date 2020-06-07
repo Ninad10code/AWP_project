@@ -28,6 +28,10 @@
     <div class="col-sm">
       <button type="button" class="btn btn-outline-primary"><a href="LogoutProfessional">Logout</a></button>
     </div>
+    <div class="col-sm">
+      <button type="button" class="btn btn-outline-primary"><a href="/AWP_webapp/changeProfAvailability?value=<%=id%>">Change Availability</a></button>
+      <p style="color:red">${message}</p>
+    </div>
   </div>
 </div>
        

@@ -1,4 +1,5 @@
- <%@page import="java.sql.DriverManager"%>
+ <%@page import="java.io.PrintWriter"%>
+<%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -8,7 +9,7 @@ String driver = "com.mysql.jdbc.Driver";
 String connectionUrl = "jdbc:mysql://localhost:3306/";
 String database = "proserv";
 String userid = "root";
-String password = "root";
+String password = "Suruchi@2001";
 try {
 Class.forName(driver);
 } catch (ClassNotFoundException e) {
@@ -36,6 +37,9 @@ while(resultSet.next()){
 <br>
 Name:<br>
 <input type="text" name="name" value="<%=resultSet.getString("name") %>">
+<br>
+Username:<br>
+<input type="text" name="username" value="<%=resultSet.getString("username") %>">
 <br>
 Password:<br>
 <input type="text" name="password" value="<%=resultSet.getString("password") %>">
@@ -66,7 +70,7 @@ Status(free/busy):<br>
 }
 connection.close();
 } catch (Exception e) {
-e.printStackTrace();
+out.println(e.getMessage());
 }
 %>
 </body>

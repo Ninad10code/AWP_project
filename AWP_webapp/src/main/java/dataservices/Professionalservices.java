@@ -6,6 +6,7 @@
 package dataservices;
 
 import datapack.Professionals;
+import java.io.PrintWriter;
 import java.util.*;
 import java.sql.*;
 
@@ -24,8 +25,8 @@ public class Professionalservices {
            try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
-                String sql = "SELECT * FROM professionals;";
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                String sql = "SELECT * FROM professionals where register='true';";
             
             
                 Statement pstmt = conn.createStatement();
@@ -73,8 +74,8 @@ public class Professionalservices {
          try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
-                String sql = "SELECT * FROM professionals WHERE id=+"+"'"+id+"'"+";";
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                String sql = "SELECT * FROM professionals WHERE register='true' AND id=+"+"'"+id+"'"+";";
 
             
             
@@ -124,8 +125,8 @@ public class Professionalservices {
          try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
-                String sql = "SELECT * FROM professionals WHERE profession=+"+"'"+profession+"'"+";";
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                String sql = "SELECT * FROM professionals WHERE register='true' AND profession=+"+"'"+profession+"'"+";";
 
             
             
@@ -167,9 +168,66 @@ public class Professionalservices {
         
     }
     
-      
+    public Professionals login(String name,String password)
+    {
+        Professionals prof=null;
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                //String sql = "SELECT * FROM professionals;";
+            String sql = "SELECT * FROM professionals WHERE name = ? AND password = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, name);
+            statement.setString(2, password);
+            ResultSet result = statement.executeQuery();
+            prof = null;
+            if (result.next()) {
+                prof = new Professionals();
+                prof.setname(result.getString("name"));
+                prof.setpassword(result.getString("password"));
+                prof.setid(Integer.parseInt(result.getString("id")));
+            }
+        }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+            return prof;
+    }
  
-    
+    public boolean UpdateDetails(Professionals prof)
+    {
+        boolean retval=false;
+         String id;
+         id = Integer.toString(prof.getid());
+        try{
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+            PreparedStatement ps;
+                    String sql="Update professionals set id=?,name=?,username=?,password=?,profession=?,email=?,mob_no=?,address=?,gender=?,status=? where id="+id;
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1,id);
+                    ps.setString(2,prof.getname());
+                    ps.setString(3,prof.getusername());
+                    ps.setString(4,prof.getpassword());
+                    ps.setString(5,prof.getprofession());
+                    ps.setString(6, prof.getemail());
+                    ps.setString(7, prof.getmob_no());
+                    ps.setString(8, prof.getaddress());
+                    ps.setString(9, prof.getgender());
+                    ps.setString(10, prof.getstatus());
+                    int i = ps.executeUpdate();
+                    if(i>0)
+                    {
+                        retval=true;
+                    }
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return retval;
+    }
     
     
     

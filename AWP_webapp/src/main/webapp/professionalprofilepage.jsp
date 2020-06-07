@@ -71,7 +71,7 @@
           <div class="col-sm-6">   
             
             <p>Profession : <%=p.getprofession() %></p>
-            <p>Status : <%=p.getstauts()%></p>
+            <p>Status : <%=p.getstatus()%></p>
             <p>Rating : <%=p.getrating() %></p>
             <p>Salary : <%=p.getsalary() %></p>
             <p>Total Services : <%=p.gettotal_services()%></p>
