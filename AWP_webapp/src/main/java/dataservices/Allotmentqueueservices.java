@@ -33,7 +33,7 @@ public class Allotmentqueueservices {
                 
              
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
                  String sql = "SELECT * FROM allotmentqueue WHERE service_id="+id;
 
                 
@@ -78,7 +78,7 @@ public class Allotmentqueueservices {
                 String id = Integer.toString(aq.getProfessional_id());
              
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
                  String sql = "Delete FROM allotmentqueue WHERE professional_id="+id;
                 Statement pstmt = conn.createStatement();
                 pstmt.executeUpdate(sql);
@@ -104,7 +104,7 @@ public class Allotmentqueueservices {
             
               
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
 
 
             String query = "insert into allotmentqueue values (?,?);";

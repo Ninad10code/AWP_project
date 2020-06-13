@@ -33,7 +33,7 @@ public class Serviceservices {
          try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
                  String sql = "SELECT * FROM services WHERE package_id="+id;
 
             

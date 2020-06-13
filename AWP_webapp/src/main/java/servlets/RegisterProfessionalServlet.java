@@ -5,6 +5,8 @@
  */
 package servlets;
 
+import datapack.Allotmentqueue;
+import dataservices.Allotmentqueueservices;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -44,6 +46,7 @@ public class RegisterProfessionalServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
+            
                 String name = request.getParameter("name");
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
@@ -53,9 +56,11 @@ public class RegisterProfessionalServlet extends HttpServlet {
                 String profession = request.getParameter("profession");
                 String agree = request.getParameter("agree");
                 String gender = request.getParameter("gender");
+                String service_id=request.getParameter("service_id");
                 String registervar="false";
                 String status="free";
                 String rating="0";
+                out.println("professionlid=");
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             
@@ -66,8 +71,8 @@ public class RegisterProfessionalServlet extends HttpServlet {
                     ResultSet rs = stmt.executeQuery("select count(*) from professionals");
                     rs.next();
                     int totalrows=rs.getInt("count(*)");
-                    String id=Integer.toString(totalrows+7);
-                    String sql="insert into professionals(username,name,password,profession,email,mob_no,address,gender,register,status,rating,id) values(?,?,?,?,?,?,?,?,?,?,?,?)";
+                    
+                    String sql="insert into professionals(username,name,password,profession,email,mob_no,address,gender,register,status,rating,service_id) values(?,?,?,?,?,?,?,?,?,?,?,?)";
                     
                     ps = conn.prepareStatement(sql);
                     ps.setString(1,username);
@@ -81,7 +86,7 @@ public class RegisterProfessionalServlet extends HttpServlet {
                     ps.setString(9, registervar);
                     ps.setString(10,status);
                     ps.setString(11,rating);
-                    ps.setString(12,id);
+                    ps.setString(12,service_id);
                     int i = ps.executeUpdate();
                     if(i > 0 || i!=0)
                     {

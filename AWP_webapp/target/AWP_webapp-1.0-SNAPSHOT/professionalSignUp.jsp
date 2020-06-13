@@ -12,9 +12,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="SignUp.css">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
     <h1>Let's get started!</h1>
+    
     <div class="main">
         
         <div class="contentProfessional">
@@ -42,7 +48,24 @@
             <div class="inputField"><input type="text" name="email" id="email" placeholder="E-mail" required></div>    
             <br>
             <label for="profession">Profession</label>
-            <div class="inputField"><input type="text" name="profession" id="profession" placeholder="Profession" required></div>    
+            <div class="inputField"><input type="text" name="profession" id="profession" placeholder="Profession e.g.Room cleaner" required></div>    
+            <br>
+             <label for="cars">Choose the profession:</label>
+
+            <select name="service_id" id="cars" required>
+                <option value="0">Select a Service that you would offer</option>
+              <option value="1">Room Cleaning</option>
+              <option value="2">Car Cleaning</option>
+              <option value="3">Washroom Cleaning</option>
+              <option value="4">Water Repairs</option>
+              <option value="5">Electrical Repairs</option>
+              <option value="6">Vehicle Repairs</option>
+              <option value="7">Home Tutor</option>
+              <option value="8">Music Tutor</option>
+              <option value="9">Yoga Tutor</option>
+              <option value="10">Art Tutor</option>
+            </select> 
+            <br>
             <br>
             <label for="gender">Gender</label>
             

@@ -25,7 +25,7 @@ public class Reviewservices {
          try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
                 String sql = "SELECT * FROM reviews ORDER BY id DESC;";
             
                 Statement pstmt = conn.createStatement();
@@ -61,7 +61,7 @@ public class Reviewservices {
             
               
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
 
 
             String query = "insert into reviews(name, comment, rating) values (?,?,?);";

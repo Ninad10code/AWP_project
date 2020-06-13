@@ -175,7 +175,7 @@ public class Professionalservices {
             Class.forName("com.mysql.jdbc.Driver");
                 Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
                 //String sql = "SELECT * FROM professionals;";
-            String sql = "SELECT * FROM professionals WHERE name = ? AND password = ?";
+            String sql = "SELECT * FROM professionals WHERE username = ? AND password = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, name);
             statement.setString(2, password);

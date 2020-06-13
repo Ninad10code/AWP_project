@@ -5,7 +5,9 @@
  */
 package servlets;
 
+import datapack.Allotmentqueue;
 import datapack.Professionals;
+import dataservices.Allotmentqueueservices;
 import dataservices.Professionalservices;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -43,11 +45,18 @@ public class NewProfApprovalServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        
+            String id = request.getParameter("value");
+            String approve=request.getParameter("approve");
+            Allotmentqueue aq = new Allotmentqueue();
+            Allotmentqueueservices aqserv = new Allotmentqueueservices();
+            Professionals prof=new Professionals();
+            Professionalservices profserv=new Professionalservices();
+            prof=profserv.getProfessinalsById(id);
         try{
             /* TODO output your page here. You may use following sample code. */
             
-            String id = request.getParameter("value");
-            String approve=request.getParameter("approve");
+            
             Class.forName("com.mysql.jdbc.Driver");
             
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
@@ -57,6 +66,10 @@ public class NewProfApprovalServlet extends HttpServlet {
                 String sql="Update professionals set register='true' where id="+id;
                 ps = conn.prepareStatement(sql);
                 int i = ps.executeUpdate();
+                
+                aq.setProfessional_id(prof.getid());
+                aq.setService_id(prof.getservice_id());
+                aqserv.push(aq);
             }
             else if(approve.equals("0"))
             {
