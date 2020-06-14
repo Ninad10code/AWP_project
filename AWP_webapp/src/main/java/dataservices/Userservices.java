@@ -15,6 +15,8 @@ import java.sql.*;
  */
 public class Userservices {
     
+    private final String dbuser = "root";
+    private final String dbpass = "root";
      ArrayList<Users> userlist  = new ArrayList<Users>();
      
     
@@ -23,7 +25,7 @@ public class Userservices {
            try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM users;";
             
             
@@ -66,7 +68,7 @@ public class Userservices {
            try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM users WHERE name="+name;
             
             
@@ -111,7 +113,7 @@ public class Userservices {
             
               
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
 
 
             String query = "insert into users(name, password, email, mob_no, address, gender) values (?,?,?,?,?,?);";
@@ -149,7 +151,7 @@ public class Userservices {
      try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM users;";
             
             

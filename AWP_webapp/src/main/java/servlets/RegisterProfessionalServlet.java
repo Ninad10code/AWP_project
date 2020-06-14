@@ -64,7 +64,7 @@ public class RegisterProfessionalServlet extends HttpServlet {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
                 PreparedStatement ps;
                     
                     Statement stmt = conn.createStatement();

@@ -16,8 +16,11 @@ import java.sql.*;
  * @author kumar
  */
 public class Professionalservices {
+      
     
-     ArrayList<Professionals> proflist  = new ArrayList<Professionals>();
+    private final String dbuser = "root";
+    private final String dbpass = "root";
+    ArrayList<Professionals> proflist  = new ArrayList<Professionals>();
      
     
     public  ArrayList<Professionals> getProfessionalsList()
@@ -25,7 +28,7 @@ public class Professionalservices {
            try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM professionals where register='true';";
             
             
@@ -38,16 +41,16 @@ public class Professionalservices {
 
                        prof.setid(Integer.parseInt(rs.getString(1)));
                        prof.setname(rs.getString(2));
-                       prof.setpassword(rs.getString(3));
-                       prof.setprofession(rs.getString(4));
-                       prof.setemail(rs.getString(5));
-                       prof.setmob_no(rs.getString(6));
-                       prof.setaddress(rs.getString(7));
-                       prof.setgender(rs.getString(8));
-                       prof.setstatus(rs.getString(9));
-                       prof.setrating(rs.getString(10));
-                       prof.setsalary(rs.getString(11));
-                       prof.settotal_services(rs.getString(12));
+                       prof.setpassword(rs.getString(4));
+                       prof.setprofession(rs.getString(5));
+                       prof.setemail(rs.getString(6));
+                       prof.setmob_no(rs.getString(7));
+                       prof.setaddress(rs.getString(8));
+                       prof.setgender(rs.getString(9));
+                       prof.setstatus(rs.getString(10));
+                       prof.setrating(rs.getString(11));
+                       prof.setsalary(rs.getString(12));
+                       prof.settotal_services(rs.getString(13));
 
                        proflist.add(prof);
 
@@ -74,7 +77,7 @@ public class Professionalservices {
          try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM professionals WHERE register='true' AND id="+id;
 
             
@@ -127,7 +130,7 @@ public class Professionalservices {
          try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM professionals WHERE register='true' AND profession=+"+"'"+profession+"'"+";";
 
             
@@ -175,7 +178,7 @@ public class Professionalservices {
         Professionals prof=null;
         try{
             Class.forName("com.mysql.jdbc.Driver");
-                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 //String sql = "SELECT * FROM professionals;";
             String sql = "SELECT * FROM professionals WHERE username = ? AND password = ? AND register='true'";
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -205,7 +208,7 @@ public class Professionalservices {
         try{
             
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
             PreparedStatement ps;
                     String sql="Update professionals set id=?,name=?,username=?,password=?,profession=?,email=?,mob_no=?,address=?,gender=?,status=? where id="+id;
                     ps = conn.prepareStatement(sql);

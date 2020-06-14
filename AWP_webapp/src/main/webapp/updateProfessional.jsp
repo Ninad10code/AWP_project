@@ -9,7 +9,7 @@ String driver = "com.mysql.jdbc.Driver";
 String connectionUrl = "jdbc:mysql://localhost:3306/";
 String database = "proserv";
 String userid = "root";
-String password = "Suruchi@2001";
+String password = "root";
 try {
 Class.forName(driver);
 } catch (ClassNotFoundException e) {

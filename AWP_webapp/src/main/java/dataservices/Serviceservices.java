@@ -19,11 +19,10 @@ import java.util.ArrayList;
  * @author kumar
  */
 public class Serviceservices {
-    
-    
-     
    
-    
+    private final String dbuser = "root";
+    private final String dbpass = "root";
+   
     public ArrayList<Services> getServicesByPackageId(String id)
     {
         
@@ -33,7 +32,7 @@ public class Serviceservices {
          try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                  String sql = "SELECT * FROM services WHERE package_id="+id;
 
             
@@ -83,7 +82,7 @@ public class Serviceservices {
          try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                  String sql = "SELECT * FROM services WHERE id="+id;
 
             
@@ -128,7 +127,7 @@ public class Serviceservices {
             
               
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
 
 
             String query = "insert into services(name, price, description, image_url, package_id) values (?,?,?,?,?);";

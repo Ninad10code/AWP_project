@@ -15,13 +15,16 @@ import java.sql.*;
  * @author kumar
  */
 public class Adminservices {
+   
+    private final String dbuser = "root";
+    private final String dbpass = "root";
     
    public boolean login(String name , String password)
    {
      try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM admins;";
             
                 Statement pstmt = conn.createStatement();

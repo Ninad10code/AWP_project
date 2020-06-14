@@ -18,6 +18,9 @@ import datapack.Reviews;
  */
 public class Reviewservices {
     
+      
+    private final String dbuser = "root";
+    private final String dbpass = "root";
      public ArrayList<Reviews> getAllReviews()
     {
          ArrayList<Reviews> reviewlist = new ArrayList<Reviews>();
@@ -25,7 +28,7 @@ public class Reviewservices {
          try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM reviews ORDER BY id DESC;";
             
                 Statement pstmt = conn.createStatement();
@@ -61,7 +64,7 @@ public class Reviewservices {
             
               
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
 
 
             String query = "insert into reviews(name, comment, rating) values (?,?,?);";

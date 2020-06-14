@@ -19,6 +19,8 @@ import java.util.ArrayList;
 public class Packageservices {
     
     
+    private final String dbuser = "root";
+    private final String dbpass = "root";
    
     
     public ArrayList<Packages> getAllPackages()
@@ -28,7 +30,7 @@ public class Packageservices {
          try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM packages;";
             
             
