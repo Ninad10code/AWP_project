@@ -138,6 +138,14 @@ public class Professionals {
             this.register="true";
         }
     }
+    public String getregister()
+    {
+        return this.register;
+    }
+    public void setregister(String register)
+    {
+        this.register=register;
+    }
     public void setservice_id(int id)
     {
         this.service_id=id;

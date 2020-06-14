@@ -36,10 +36,11 @@ public class Adminlogoutservlet extends HttpServlet {
         
         HttpSession session = request.getSession(false);
         session.removeAttribute("username");
-            
+        session.removeAttribute("previous");
+        session.removeAttribute("current");
          ServletContext context = getServletContext();
          request.setAttribute("logoutmessage","successfully logged out");
-         RequestDispatcher dispatcher = context.getRequestDispatcher("/indexuser.jsp");
+         RequestDispatcher dispatcher = context.getRequestDispatcher("/userhomepage.jsp");
          dispatcher.forward(request,response);
         
       

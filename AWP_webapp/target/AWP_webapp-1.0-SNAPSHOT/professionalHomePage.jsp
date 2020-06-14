@@ -18,12 +18,13 @@
         <%
             
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/Profileservlet");
-                dispatcher.include(request, response);
+                dispatcher.forward(request, response);
         %>
+        <%--
         <br>
         <div class="row">
             <div class="col-sm">
-              <%--<button><a href="updateProfessional.jsp?id=<%=id%>">Change Status</a></button>--%>
+              <button><a href="updateProfessional.jsp?id=<%=id%>">Change Status</a></button>
             </div>
             <div class="col-sm">
                 <% 
@@ -40,6 +41,6 @@
               <p style="color:red">${message}</p>
             </div>
         </div>
-        <br>
+        <br>--%>
     </body>
 </html>

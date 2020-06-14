@@ -5,12 +5,40 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<% String username = (String)session.getAttribute("username");%>
+<% String username = (String)session.getAttribute("username");
+    String url="/AWP_webapp/adminlogoutservlet";
+    String login_logout="Logout";
+    String link1="";
+    String link2="";
+    String option1="";
+    String option2=" ";
+    if(username==null){
+        username="New User";
+        url="/AWP_webapp/indexuser.jsp";
+        login_logout="Login";
+    }
+   
+        String currentuser=(String)session.getAttribute("current");
+        if(currentuser!=null)
+        {
+            if(currentuser.equals("professional"))
+            {
+                String id;
+            
+                id=(String)request.getAttribute("value");
+                link1="/AWP_webapp/updateProfessional.jsp?id="+id;
+                link2="/AWP_webapp/changeProfAvailability?value="+id;
+                option1="Update Details";
+                option2="Change Availability";
+            }
+        }
+        
+%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Proserv</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1 text/html">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,14 +57,14 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item" id="edit">
-        <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="<%=link1%>"><%=option1%></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="<%=link2%>"><%=option2%></a><p style="color:red">${message}</p>
       </li>
-      <li class="nav-item">
+      <%-- <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
-      </li>    
+      </li>  --%>  
     </ul>
       
   </div>  
@@ -44,7 +72,7 @@
   <ul class="navbar-nav">
     <li class="nav-item">
         <button class="btn btn-dark">Hello <%= username %></button>
-      <a href="/AWP_webapp/adminlogoutservlet"><button class="btn btn-primary" >Logout</button></a>
+        <a href=<%=url%>><button class="btn btn-primary" ><%out.print(login_logout);%></button></a>
     </li>
   </ul>
 </div>

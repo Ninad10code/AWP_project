@@ -13,6 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -39,6 +40,9 @@ public class LogoutProfessional extends HttpServlet {
              Cookie ck=new Cookie("name","");  
             ck.setMaxAge(0);  
             response.addCookie(ck);
+            HttpSession session = request.getSession();
+            session.removeAttribute("username");
+            session.removeAttribute("current");
             out.print("<h1>you are successfully logged out!</h1>");  
             request.getRequestDispatcher("indexProfessional.jsp").include(request, response); 
         }

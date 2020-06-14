@@ -42,7 +42,7 @@
     
         Professionals p = new Professionals();
         p=(Professionals)request.getAttribute("prof");
-             
+             if(p==null)out.print("prof is null");
     %>
     
     <div class="container p-3 my-3 bg-dark text-white">

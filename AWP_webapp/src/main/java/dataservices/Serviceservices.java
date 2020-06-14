@@ -83,7 +83,7 @@ public class Serviceservices {
          try{
             
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
                  String sql = "SELECT * FROM services WHERE id="+id;
 
             
@@ -128,7 +128,7 @@ public class Serviceservices {
             
               
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
 
 
             String query = "insert into services(name, price, description, image_url, package_id) values (?,?,?,?,?);";

@@ -75,9 +75,9 @@ public class Userregisterservlet extends HttpServlet {
         else
         {
         
-            if(!userv.register_user(user))
+            if(!userv.register_user(user).equals("true"))
             {
-                request.setAttribute("error_message","sorry couldn't register you try again");
+                request.setAttribute("error_message",userv.register_user(user));
                 request.getRequestDispatcher("/userSignUp.jsp").forward(request, response);
             }
             else

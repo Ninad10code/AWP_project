@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import com.sun.net.httpserver.HttpContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import dataservices.Serviceservices;
 import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -36,21 +38,39 @@ public class Bookserviceservlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        
-        
-        Services s = new Services();
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession(true);
+        try{
+            
+            Services s = new Services();
         
         Serviceservices serv = new Serviceservices(); 
         
         String id = request.getParameter("value");
-        
+        request.setAttribute("service_id", id);
         s = serv.getServicesByServiceId(id);
         
         request.setAttribute("serv", s);
-        
-         ServletContext context = getServletContext();
+        if(session.getAttribute("username") == null)
+            {
+                session.setAttribute("previous", "bookingPage");
+                ServletContext context = getServletContext();
+             RequestDispatcher dispatcher = context.getRequestDispatcher("/indexuser.jsp");
+             dispatcher.forward(request,response);
+            } 
+        else{
+            ServletContext context = getServletContext();
          RequestDispatcher dispatcher = context.getRequestDispatcher("/confirmbooking.jsp");
          dispatcher.forward(request,response);
+        }
+        
+        
+        }
+        catch(Exception e)
+        {
+            out.println(e.getMessage());
+        }
+        
         
         
         

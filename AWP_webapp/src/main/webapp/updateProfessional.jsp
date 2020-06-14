@@ -29,43 +29,62 @@ while(resultSet.next()){
 %>
 <!DOCTYPE html>
 <html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="SignUp.css">
+    <title>Update details</title>
+    </head>
 <body>
 <h1>Update data from database in jsp</h1>
+<div class="contentProfessional">
 <form method="post" action="updateProfDetails">
 <input type="hidden" name="id" value="<%=resultSet.getString("id") %>">
-<input type="text" name="id" value="<%=resultSet.getString("id") %>">
+<%--<input type="text" name="id" value="<%=resultSet.getString("id") %>">--%>
 <br>
-Name:<br>
-<input type="text" name="name" value="<%=resultSet.getString("name") %>">
+<label>Name:</label>
+<div>
+<input type="text" name="name" value="<%=resultSet.getString("name") %>" id="field">
+</div>
 <br>
-Username:<br>
-<input type="text" name="username" value="<%=resultSet.getString("username") %>">
+<label>Username:</label>
+<div>
+<input type="text" name="username" value="<%=resultSet.getString("username") %>" id="field">
+</div>
 <br>
-Password:<br>
-<input type="text" name="password" value="<%=resultSet.getString("password") %>">
+<label>Password:</label>
+<div>
+<input type="text" name="password" value="<%=resultSet.getString("password") %>" id="field"></div>
 <br>
-Profession:<br>
-<input type="text" name="profession" value="<%=resultSet.getString("profession") %>">
+<label>Profession:</label>
+<div>
+<input type="text" name="profession" value="<%=resultSet.getString("profession") %>" id="field"></div>
 <br>
-Email Id:<br>
-<input type="email" name="email" value="<%=resultSet.getString("email") %>">
+<label>Email Id:</label>
+<div>
+<input type="email" name="email" value="<%=resultSet.getString("email") %>" id="field"></div>
 <br>
-Mobile Number:<br>
-<input type="text" name="mob_no" value="<%=resultSet.getString("mob_no") %>">
+<label>Mobile Number:</label>
+<div>
+<input type="text" name="mob_no" value="<%=resultSet.getString("mob_no") %>" id="field"></div>
 <br>
-Address:<br>
-<input type="text" name="address" value="<%=resultSet.getString("address") %>">
+<label>Address:</label>
+<div>
+<input type="text" name="address" value="<%=resultSet.getString("address") %>" id="field"></div>
 <br>
-Gender:<br>
-<input type="text" name="gender" value="<%=resultSet.getString("gender") %>">
+<label>Gender:</label>
+<div>
+<input type="text" name="gender" value="<%=resultSet.getString("gender") %>" id="field"></div>
 <br>
-Status(free/busy):<br>
-<input type="text" name="status" value="<%=resultSet.getString("status")%>">
+<label>Status(free/busy):</label>
+<div>
+<input type="text" name="status" value="<%=resultSet.getString("status")%>" id="field"></div>
 <br>
 
 <br>
-<input type="submit" value="submit">
+<button type="submit"  id="button">submit</button>
 </form>
+</div>
 <%
 }
 connection.close();

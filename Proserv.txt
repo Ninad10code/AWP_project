@@ -46,7 +46,7 @@ email VARCHAR(50),
 mob_no VARCHAR(20),
 address VARCHAR(200),
 gender VARCHAR(2),
-profileimage VARCHAR(200) DEFAULT images/img_avatar.png ,
+profileimage VARCHAR(200) DEFAULT 'images/img_avatar.png' ,
 PRIMARY KEY (id)
 );
 
@@ -63,9 +63,9 @@ status VARCHAR(20),
 rating VARCHAR(20),
 salary VARCHAR(20),
 total_services VARCHAR(20),
-service_id INT,
 PRIMARY KEY (id)
 );
+CREATE TABLE professionals (id INT NOT NULL AUTO_INCREMENT, `name` VARCHAR(30) NOT NULL, username VARCHAR(20) NOT NULL, password VARCHAR(30) NOT NULL, profession VARCHAR(20) NOT NULL, email VARCHAR(20) NOT NULL, mob_no VARCHAR(20) NOT NULL, address VARCHAR(30) NOT NULL, gender VARCHAR(15) NOT NULL, status VARCHAR(20) DEFAULT "free"  NOT NULL, rating VARCHAR(20) DEFAULT 0 , salary VARCHAR(20) DEFAULT 0 , total_services VARCHAR(20) DEFAULT 0 , register VARCHAR(10) DEFAULT false  NOT NULL, service_id INT NOT NULL, PRIMARY KEY (id));
 
 
 //admins table
@@ -107,7 +107,6 @@ id INT NOT NULL AUTO_INCREMENT,
 description VARCHAR(1000),
 image_url VARCHAR(1000),
 package_id INT,
-
 PRIMARY KEY (id)
 );
 

@@ -18,6 +18,9 @@ import javax.servlet.http.HttpSession;
 import dataservices.Packageservices;
 import java.util.ArrayList;
 import datapack.Packages;
+import datapack.Services;
+import datapack.Users;
+import dataservices.Serviceservices;
 /**
  *
  * @author kumar
@@ -46,14 +49,15 @@ public class userloginservlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        
+        Users u=new Users();
          Userservices ud = new Userservices();
         
         String name = request.getParameter("name");
         String password = request.getParameter("pass");
+        
         ServletContext context = getServletContext();
         
-        
+        PrintWriter out=response.getWriter();
         
         if(ud.login(name,password))
         {
@@ -61,13 +65,37 @@ public class userloginservlet extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("username", name);
             session.setMaxInactiveInterval(30*60);
+            session.setAttribute("current", "user");
+        
+        
             
-            packlist = pserv.getAllPackages();
-            
-            request.setAttribute("packagelist",packlist);
+            String id = request.getParameter("value");
+            if(!id.equals("0"))
+            {  
+                if(session.getAttribute("previous").toString().equals("bookingPage"))
+                {
+                    Services s = new Services();
+
+                Serviceservices serv = new Serviceservices(); 
+
+
+                request.setAttribute("service_id", id);
+                s = serv.getServicesByServiceId(id);
+
+                request.setAttribute("serv", s);
+                    if(s==null)out.println("serv is null");
+                    else{
+                    RequestDispatcher dispatcher = context.getRequestDispatcher("/confirmbooking.jsp");
+                   dispatcher.forward(request,response);}
+                }
+            }
+            else{
+                
  
            RequestDispatcher dispatcher = context.getRequestDispatcher("/userhomepage.jsp");
                dispatcher.forward(request,response);
+            }
+        
         }
         else
         {

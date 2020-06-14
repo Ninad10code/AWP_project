@@ -60,11 +60,52 @@ public class Userservices {
         
     }
     
-    
-    public boolean register_user(Users user)
+    public Users getUsersByName(String name)
+    {
+        Users user = new Users();
+           try{
+            
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                String sql = "SELECT * FROM users WHERE name="+name;
+            
+            
+                Statement pstmt = conn.createStatement();
+                ResultSet rs = pstmt.executeQuery(sql);
+               
+                    while(rs.next())
+                    {   
+                       
+
+                       user.setid(Integer.parseInt(rs.getString(1)));
+                       user.setname(rs.getString(2));
+                       user.setpassword(rs.getString(3));
+                       user.setemail(rs.getString(4));
+                       user.setmob_no(rs.getString(5));
+                       user.setaddress(rs.getString(6));
+                       user.setgender(rs.getString(7));
+                       user.setImage_url(rs.getString(8));
+                       
+                      
+
+                    }
+                
+               
+                }
+           
+                catch(Exception e)
+                {
+                    System.out.println("failure in connection");
+                }
+           
+           return user;
+            
+        
+    }
+    public String register_user(Users user)
     { 
       
-        
+        String ret="";
         try
         {
             
@@ -88,17 +129,17 @@ public class Userservices {
             
 
             pstmt.executeUpdate();
-            
-            return true;
+            ret="true";
+            return ret;
             
         } 
         catch(Exception e)
         {
             System.out.println("Error");
-            
+            ret=e.getMessage();
         }
         
-        return false;
+        return ret;
         
     }     
     

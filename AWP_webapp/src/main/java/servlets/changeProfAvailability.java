@@ -70,7 +70,7 @@ public class changeProfAvailability extends HttpServlet {
                     {
                         status="busy";
                         request.setAttribute("message","Availability status changed from FREE TO BUSY");
-                        
+                        //out.print("aq.serviceid="+Integer.toString(aq.getService_id())+"aq.profid="+Integer.toString(aq.getProfessional_id()));
                         aqserv.pop(aq);
                     }
                     else if(currentstatus.equals("busy"))

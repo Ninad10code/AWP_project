@@ -4,6 +4,7 @@
     Author     : Lenovo
 --%>
 
+<%@page import="datapack.Services"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
@@ -25,6 +26,21 @@
     
 
     <h1>Welcome to Pro-Serv</h1>
+    <%  
+        
+    String service_id="0";
+    try{
+    service_id=request.getAttribute("service_id").toString();
+    if(service_id==null){
+        service_id="0";
+        session.setAttribute("previous", "newLogin");
+    }
+    }
+    catch(Exception e)
+    {
+        e.printStackTrace();
+    }
+    %>
     <main>
         <div class="content">
             <div class="tabs">
@@ -38,7 +54,7 @@
             </span align="center"><label for="page" id="head">Lets get started</label>
             <br>
             
-            <form action="userloginservlet" method ="post">
+            <form action="userloginservlet?value=<%=service_id %>" method ="post">
             <label for="username">Username</label>
             <input type="text" name="name" id="username" placeholder="Username" required>
             <br>

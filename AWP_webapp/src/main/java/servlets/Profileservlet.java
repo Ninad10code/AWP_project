@@ -36,23 +36,27 @@ public class Profileservlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String id = request.getAttribute("value").toString();
-        if(id.equals(null))
-        {
-            id = request.getParameter("value");
-        }
         PrintWriter out = response.getWriter();
+        String id=null;
+         if(request.getAttribute("value")==null)
+         {
+             id = request.getParameter("value");
+         }
+         else{
+             id=request.getAttribute("value").toString();
+         }
+        
         Professionalservices profserv = new Professionalservices();
         Professionals prof = new Professionals();
         
         prof = profserv.getProfessinalsById(id);
         
-        
+        if(prof==null)out.println("prof is null");
+        else{
         request.setAttribute("prof", prof);  
         ServletContext context = getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/professionalprofilepage.jsp");
-        dispatcher.include(request,response);
+        dispatcher.include(request,response);}
        
         
         

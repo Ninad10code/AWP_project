@@ -4,6 +4,7 @@
     Author     : kumar
 --%>
 
+<%@page import="dataservices.Packageservices"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="datapack.Packages" %>
 <%@page import="java.util.*"%>
@@ -73,7 +74,10 @@
     <div class="row">
 
         <%
-            List<Packages> packlist = (List<Packages>)request.getAttribute("packagelist");
+            Packageservices pserv = new Packageservices();
+            ArrayList<Packages> packlist1 = new ArrayList<Packages>();
+            packlist1 = pserv.getAllPackages();
+            List<Packages> packlist = (List<Packages>)packlist1;
             
             for(Packages p : packlist)
             {

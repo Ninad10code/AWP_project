@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -52,24 +53,28 @@ public class LoginProfessional extends HttpServlet {
         Professionalservices profserv=new Professionalservices();
         Professionals prof;
         prof=profserv.login(name, password);
-        String destPage="indexProfessional.jsp";
+        ServletContext context = getServletContext();
+        
         if(prof!=null)
         {
+           
             HttpSession session = request.getSession();
-            session.setAttribute("profname", name);
-            Cookie ck=new Cookie("name",name);
-            response.addCookie(ck);
+            session.setAttribute("username", name);
+            session.setAttribute("current", "professional");
+            /*Cookie ck=new Cookie("name",name);
+            response.addCookie(ck);*/
             String id;
             id = Integer.toString(prof.getid()) ;
             request.setAttribute("value",id );
-            destPage = "professionalHomePage.jsp";
-            RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/Profileservlet");
+                dispatcher.forward(request, response);
         dispatcher.forward(request, response);
         }
         else{
-            request.getRequestDispatcher("ErrorLogin.jsp").include(request,response);
-            RequestDispatcher dispatcher = request.getRequestDispatcher(destPage);
-            dispatcher.include(request, response);
+            request.setAttribute("message","login Unsuccessful try again");
+             RequestDispatcher dispatcher = context.getRequestDispatcher("/indexProfessional.jsp");
+               dispatcher.forward(request,response);
         }
         
     }
