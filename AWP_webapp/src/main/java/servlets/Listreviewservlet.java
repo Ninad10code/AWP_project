@@ -35,13 +35,14 @@ public class Listreviewservlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        String limit = request.getParameter("value");
+        
         Reviews re = new Reviews();
         Reviewservices rserv = new Reviewservices();
         
         ArrayList<Reviews> relist = new ArrayList<Reviews>();
-        relist = rserv.getAllReviews();
-        
-            
+        relist = rserv.getAllReviews(limit);
+              
         ServletContext context = getServletContext();
        
         request.setAttribute("reviewlist",relist);
@@ -87,4 +88,5 @@ public class Listreviewservlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }
