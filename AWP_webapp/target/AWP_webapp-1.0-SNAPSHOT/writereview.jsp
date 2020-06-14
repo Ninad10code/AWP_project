@@ -53,6 +53,7 @@
         
         <%if(request.getAttribute("message")!=null){%>   
          <div class="alert alert-info">${message}</div>
+         <a class="btn btn-info" href='/AWP_webapp/Listreviewservlet'>View Reviews</a>
         <%}%>
         
         </div>

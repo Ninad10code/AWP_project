@@ -67,9 +67,8 @@
         <h1>Thank You !! Visit Again</h1>
     </div>  
     
-     <a class="btn btn-primary" href="/AWP_webapp/adminlogoutservlet">Logout</a>
+     <a class="btn btn-primary" href="writereview.jsp">Feedback</a>
       
-        
 </div>
     
       <%}else{%>   
