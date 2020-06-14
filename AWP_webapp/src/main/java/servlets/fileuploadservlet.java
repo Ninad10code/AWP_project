@@ -35,7 +35,7 @@ public class fileuploadservlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      * 
      */
-    private final String UPLOAD_DIRECTORY = "C:/Users/Dell/Documents/NetBeansProjects/AWP_webapp/src/main/webapp/images";
+    private final String UPLOAD_DIRECTORY = "C:\\Users\\kumar\\Desktop\\mywork\\AWP_project\\AWP_webapp\\src\\main\\webapp\\images";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

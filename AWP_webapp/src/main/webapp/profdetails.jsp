@@ -40,10 +40,17 @@
     
   <p> Filter by profession :<p/> 
   <select name="profesionals" class="form-control" onchange="loadDoc(this.value)">
-    <option value="default">Select a profession:</option>
-    <option value="maid">maid</option>
-    <option value="plumber">plumber</option>
-    <option value="salon">salon</option>
+             <option value="default">Select a profession:</option>
+              <option value="1">Room Cleaning</option>
+              <option value="2">Car Cleaning</option>
+              <option value="3">Washroom Cleaning</option>
+              <option value="4">Water Repairs</option>
+              <option value="5">Electrical Repairs</option>
+              <option value="6">Vehicle Repairs</option>
+              <option value="7">Home Tutor</option>
+              <option value="8">Music Tutor</option>
+              <option value="9">Yoga Tutor</option>
+              <option value="10">Art Tutor</option>
   </select>
 </form>
      

@@ -123,7 +123,7 @@ public class Professionalservices {
     }
     
     
-      public  ArrayList<Professionals> getProfessinalsByProfession(String profession)
+      public  ArrayList<Professionals> getProfessinalsByProfession(String id)
     {   
           ArrayList<Professionals> proflist  = new ArrayList<Professionals>();
         
@@ -131,7 +131,7 @@ public class Professionalservices {
             
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
-                String sql = "SELECT * FROM professionals WHERE register='true' AND profession=+"+"'"+profession+"'"+";";
+                String sql = "SELECT * FROM professionals WHERE register='true' AND service_id=+"+"'"+id+"'"+";";
 
             
             
@@ -144,16 +144,16 @@ public class Professionalservices {
 
                        prof.setid(Integer.parseInt(rs.getString(1)));
                        prof.setname(rs.getString(2));
-                       prof.setpassword(rs.getString(3));
-                       prof.setprofession(rs.getString(4));
-                       prof.setemail(rs.getString(5));
-                       prof.setmob_no(rs.getString(6));
-                       prof.setaddress(rs.getString(7));
-                       prof.setgender(rs.getString(8));
-                       prof.setstatus(rs.getString(9));
-                       prof.setrating(rs.getString(10));
-                       prof.setsalary(rs.getString(11));
-                       prof.settotal_services(rs.getString(12));
+                       prof.setpassword(rs.getString(4));
+                       prof.setprofession(rs.getString(5));
+                       prof.setemail(rs.getString(6));
+                       prof.setmob_no(rs.getString(7));
+                       prof.setaddress(rs.getString(8));
+                       prof.setgender(rs.getString(9));
+                       prof.setstatus(rs.getString(10));
+                       prof.setrating(rs.getString(11));
+                       prof.setsalary(rs.getString(12));
+                       prof.settotal_services(rs.getString(13));
 
                        proflist.add(prof);
 
