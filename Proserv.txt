@@ -143,3 +143,19 @@ INT NOT NULL,
 service_id INT,
 PRIMARY KEY (professional_id)
 );
+
+//orders table
+CREATE TABLE orders (
+professional_id
+INT NOT NULL,
+service_id INT NOT NULL,
+user_id INT NOT NULL
+);
+
+//orders table
+CREATE TABLE orders (
+professional_id
+INT NOT NULL,
+service_id INT NOT NULL,
+user_id INT NOT NULL
+);
