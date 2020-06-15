@@ -65,8 +65,9 @@ public class LoginProfessional extends HttpServlet {
             response.addCookie(ck);*/
             String id;
             id = Integer.toString(prof.getid()) ;
+            session.setAttribute("current_id",id);
             request.setAttribute("value",id );
-            
+            request.setAttribute("prof_id",Integer.parseInt(id) );
             RequestDispatcher dispatcher = request.getRequestDispatcher("/Profileservlet");
                 dispatcher.forward(request, response);
         dispatcher.forward(request, response);

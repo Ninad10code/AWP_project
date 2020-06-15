@@ -37,19 +37,19 @@ public class Profileservlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String id=null;
+        String id1=null;
          if(request.getAttribute("value")==null)
          {
-             id = request.getParameter("value");
+             id1 = request.getParameter("value");
          }
          else{
-             id=request.getAttribute("value").toString();
+             id1=request.getAttribute("value").toString();
          }
         
         Professionalservices profserv = new Professionalservices();
         Professionals prof = new Professionals();
         
-        prof = profserv.getProfessinalsById(id);
+        prof = profserv.getProfessinalsById(id1);
         
         if(prof==null)out.println("prof is null");
         else{

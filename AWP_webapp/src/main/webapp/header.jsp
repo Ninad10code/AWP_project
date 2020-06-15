@@ -12,24 +12,33 @@
     String link2="";
     String option1="";
     String option2=" ";
+    String home="/AWP_webapp/userhomepage.jsp";
+    String option4="Orders History";
     if(username==null){
         username="New User";
         url="/AWP_webapp/indexuser.jsp";
         login_logout="Login";
+        option4="";
     }
    
         String currentuser=(String)session.getAttribute("current");
         if(currentuser!=null)
         {
+            
             if(currentuser.equals("professional"))
             {
                 String id;
             
-                id=(String)request.getAttribute("value");
+                id=session.getAttribute("current_id").toString();
                 link1="/AWP_webapp/updateProfessional.jsp?id="+id;
                 link2="/AWP_webapp/changeProfAvailability?value="+id;
                 option1="Update Details";
                 option2="Change Availability";
+                home="/AWP_webapp/Profileservlet?value="+id;
+            }
+            else if(currentuser.equals("admin"))
+            {
+                home="/AWP_webapp/adminhomepage.jsp";
             }
         }
         
@@ -50,7 +59,7 @@
 <body id="ajax">
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="#">Proserv</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -62,9 +71,12 @@
       <li class="nav-item">
         <a class="nav-link" href="<%=link2%>"><%=option2%></a><p style="color:red">${message}</p>
       </li>
-      <%-- <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>  --%>  
+      <li class="nav-item">
+        <a class="nav-link" href="<%=home%>">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/AWP_webapp/OrderHistoryShowServlet"><%=option4%></a>
+      </li>
     </ul>
       
   </div>  

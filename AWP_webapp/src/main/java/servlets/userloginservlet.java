@@ -66,10 +66,11 @@ public class userloginservlet extends HttpServlet {
             session.setAttribute("username", name);
             session.setMaxInactiveInterval(30*60);
             session.setAttribute("current", "user");
-        
-        
+            u=ud.getUsersByName(name);
+            request.setAttribute("user_id", u.getid());
             
             String id = request.getParameter("value");
+            session.setAttribute("current_id", id);
             if(!id.equals("0"))
             {  
                 if(session.getAttribute("previous").toString().equals("bookingPage"))

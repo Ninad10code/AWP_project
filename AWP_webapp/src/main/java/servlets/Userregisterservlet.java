@@ -50,7 +50,6 @@ public class Userregisterservlet extends HttpServlet {
         String mob_no = request.getParameter("mob_no");
         String address = request.getParameter("address");
         String gender = request.getParameter("gender");
-        String re_password = request.getParameter("re-password");
         
         user.setname(username);
         user.setpassword(password);
@@ -59,21 +58,7 @@ public class Userregisterservlet extends HttpServlet {
         user.setaddress(address);
         user.setgender(gender);
         
-        if(!password.equals(re_password))
-        {
-
-            request.setAttribute("error_message","both the passwords should be same");
-            request.getRequestDispatcher("/userSignUp.jsp").forward(request, response);
-
-               
-        }
-        else if(request.getParameter("agree") == null)
-        {
-            request.setAttribute("error_message","please agree to the terms and conditions");
-            request.getRequestDispatcher("/userSignUp.jsp").forward(request, response);
-        }
-        else
-        {
+        
         
             if(!userv.register_user(user).equals("true"))
             {
@@ -88,7 +73,7 @@ public class Userregisterservlet extends HttpServlet {
             }    
         
         
-        }
+        
         
         
         

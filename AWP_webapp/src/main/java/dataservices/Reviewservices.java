@@ -18,10 +18,10 @@ import datapack.Reviews;
  */
 public class Reviewservices {
     
+      
     private final String dbuser = "root";
-    private final String dbpass = "root";
-    
-     public ArrayList<Reviews> getAllReviews(String limit)
+    private final String dbpass = "Suruchi@2001";
+     public ArrayList<Reviews> getAllReviews()
     {
          ArrayList<Reviews> reviewlist = new ArrayList<Reviews>();
         
@@ -29,7 +29,7 @@ public class Reviewservices {
             
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
-                String sql = "SELECT * FROM reviews ORDER BY id DESC LIMIT "+limit+";";
+                String sql = "SELECT * FROM reviews ORDER BY id DESC;";
             
                 Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(sql);

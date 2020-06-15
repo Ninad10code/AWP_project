@@ -45,7 +45,7 @@ public class changeProfAvailability extends HttpServlet {
        
             /* TODO output your page here. You may use following sample code. */
             String value = request.getParameter("value");
-            String currentstatus,status="free";
+            String currentstatus;
             Allotmentqueue aq = new Allotmentqueue();
             Allotmentqueueservices aqserv = new Allotmentqueueservices();
             Professionals prof=new Professionals();
@@ -55,34 +55,21 @@ public class changeProfAvailability extends HttpServlet {
             aq.setService_id(prof.getservice_id());
             request.setAttribute("value", value);
             try{
-                Class.forName("com.mysql.jdbc.Driver");
-            
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
-                PreparedStatement ps;
-             
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT status FROM professionals WHERE id="+value);
-                if(rs.next())
-                {
-                    currentstatus=rs.getString(1);
+                currentstatus=profserv.changeAvailability(Integer.parseInt(value));
                 
-                    if(currentstatus.equals("free"))
+                
+                    if(currentstatus.equals("busy"))
                     {
-                        status="busy";
                         request.setAttribute("message","Availability status changed from FREE TO BUSY");
                         //out.print("aq.serviceid="+Integer.toString(aq.getService_id())+"aq.profid="+Integer.toString(aq.getProfessional_id()));
                         aqserv.pop(aq);
                     }
-                    else if(currentstatus.equals("busy"))
+                    else if(currentstatus.equals("free"))
                     {
-                        status="free";
                         request.setAttribute("message","Availability status changed from BUSY TO FREE");
                         aqserv.push(aq);
                     }
-                }
-                String sql="UPDATE professionals set status='"+status+"' WHERE id="+value;
-                ps = conn.prepareStatement(sql);  
-                int i = ps.executeUpdate();
+                
                 request.getRequestDispatcher("/professionalHomePage.jsp").forward(request, response);
             }
             catch(Exception e)

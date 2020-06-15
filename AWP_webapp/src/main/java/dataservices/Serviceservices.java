@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class Serviceservices {
    
     private final String dbuser = "root";
-    private final String dbpass = "root";
+    private final String dbpass = "Suruchi@2001";
    
     public ArrayList<Services> getServicesByPackageId(String id)
     {

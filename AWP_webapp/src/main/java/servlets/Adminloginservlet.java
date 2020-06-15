@@ -52,6 +52,7 @@ public class Adminloginservlet extends HttpServlet {
             HttpSession session = request.getSession(true);
             session.setAttribute("username", name);
             session.setAttribute("current", "admin");
+            session.setAttribute("current_id","-1");
             session.setMaxInactiveInterval(30*60);
             RequestDispatcher dispatcher = context.getRequestDispatcher("/adminhomepage.jsp");
                dispatcher.forward(request,response);

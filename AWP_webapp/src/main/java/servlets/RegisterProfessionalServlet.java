@@ -50,7 +50,7 @@ public class RegisterProfessionalServlet extends HttpServlet {
                 String name = request.getParameter("name");
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
-		String password = request.getParameter("password1");
+		String password = request.getParameter("password");
 		String address = request.getParameter("address");
 		String mobilenumber = request.getParameter("mobilenumber");
                 String profession = request.getParameter("profession");
@@ -64,13 +64,13 @@ public class RegisterProfessionalServlet extends HttpServlet {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
             
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
                 PreparedStatement ps;
                     
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery("select count(*) from professionals");
                     rs.next();
-                    int totalrows=rs.getInt("count(*)");
+                    //int totalrows=rs.getInt("count(*)");
                     
                     String sql="insert into professionals(username,name,password,profession,email,mob_no,address,gender,register,status,rating,service_id) values(?,?,?,?,?,?,?,?,?,?,?,?)";
                     

@@ -6,6 +6,7 @@
 package servlets;
 
 import datapack.Allotmentqueue;
+import datapack.Orders;
 import dataservices.Professionalservices;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,7 +19,11 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import datapack.Professionals;
 import datapack.Services;
+import datapack.Users;
+import dataservices.Ordersservices;
 import dataservices.Serviceservices;
+import dataservices.Userservices;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -40,10 +45,14 @@ public class Allotprofessionalservlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        PrintWriter out=response.getWriter();
         Allotmentqueue aq = new Allotmentqueue();
         Professionals prof = new Professionals();
         Services serv  = new Services();
+        Ordersservices oserv=new Ordersservices();
+        Orders order=new Orders();
+        Users u=new Users();
+        Userservices userv=new Userservices();
        
         Allotmentqueueservices aqserv = new Allotmentqueueservices();
         Professionalservices pserv = new Professionalservices();
@@ -54,26 +63,32 @@ public class Allotprofessionalservlet extends HttpServlet {
          aq = aqserv.getTopProfessinal(service_id);
          int prof_id = aq.getProfessional_id();
          int salary;
+         int user_id;
          int num_services;
+         serv =sserv.getServicesByServiceId(service_id);
+         request.setAttribute("serv",serv);
          
-         
-         if(aq!=null)
+         if(aq!=null && prof_id!=0)
          {    
 
             
              aqserv.pop(aq);
-
-             serv =sserv.getServicesByServiceId(service_id);
+             
+             HttpSession session = request.getSession();
+             String user=session.getAttribute("username").toString();
+             u=userv.getUsersByName(user);
+             user_id=u.getid();
              prof = pserv.getProfessinalsById(Integer.toString(prof_id));
              
              salary = Integer.parseInt(prof.getsalary())+ serv.getPrice() ;
              num_services = Integer.parseInt(prof.gettotal_services()) + 1;
              pserv.updateProfStats(Integer.toString(prof_id),Integer.toString(salary),Integer.toString(num_services));
              
-
-             request.setAttribute("prof",prof );
-             request.setAttribute("serv",serv);
-
+            request.setAttribute("prof",prof );
+            order.setProfessional_id(prof_id);
+            order.setUser_id(user_id);
+            order.setService_id(Integer.parseInt(service_id));
+            oserv.push(order);
 
              ServletContext context = getServletContext();
              RequestDispatcher dispatcher = context.getRequestDispatcher("/bookingreceipt.jsp");
@@ -89,6 +104,8 @@ public class Allotprofessionalservlet extends HttpServlet {
              dispatcher.forward(request,response);
          
          }
+         
+        
          
         
         

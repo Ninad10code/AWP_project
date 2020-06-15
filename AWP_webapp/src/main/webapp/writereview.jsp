@@ -16,9 +16,6 @@
     
     }
 </style>    
-<%
-    String prof_id = request.getParameter("value");
-%>
 
         <br>
         <br>
@@ -33,7 +30,6 @@
                 
                  <div class="form-group">
                     <label for="service_name">Name:</label>
-                    <input type="hidden" value="<%=prof_id%>" name="profid">
                     <input type="text" id="service_name" class="form-control" placeholder="Enter Name" name="name">
                  </div>
                  <div class="form-group">

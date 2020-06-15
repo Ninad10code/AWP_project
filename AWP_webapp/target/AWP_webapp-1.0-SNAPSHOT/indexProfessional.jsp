@@ -35,6 +35,9 @@
             <input type="password" name="pass" id="password" placeholder="Password" required>
             <br>
             <button type="submit">Log in</button>
+            <p style="color: greenyellow">${success_message}</p>
+             <p style="color:red">${message}</p>
+              <p style="color:greenyellow">${logoutmessage}</p>
             </form>
             <!-- <br>
             <div class="signUP">
