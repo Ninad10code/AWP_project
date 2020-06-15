@@ -53,6 +53,8 @@ public class Allotprofessionalservlet extends HttpServlet {
         
          aq = aqserv.getTopProfessinal(service_id);
          int prof_id = aq.getProfessional_id();
+         int salary;
+         int num_services;
          
          
          if(aq!=null)
@@ -62,8 +64,11 @@ public class Allotprofessionalservlet extends HttpServlet {
              aqserv.pop(aq);
 
              serv =sserv.getServicesByServiceId(service_id);
-
              prof = pserv.getProfessinalsById(Integer.toString(prof_id));
+             
+             salary = Integer.parseInt(prof.getsalary())+ serv.getPrice() ;
+             num_services = Integer.parseInt(prof.gettotal_services()) + 1;
+             pserv.updateProfStats(Integer.toString(prof_id),Integer.toString(salary),Integer.toString(num_services));
              
 
              request.setAttribute("prof",prof );

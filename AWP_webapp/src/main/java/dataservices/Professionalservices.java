@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 import java.util.*;
 import java.sql.*;
 
-
 /**
  *
  * @author kumar
@@ -234,6 +233,47 @@ public class Professionalservices {
         return retval;
     }
     
+    public boolean updateProfStats(String id,String salary,String num_services)
+    {
+        boolean retval=false;
+        try{
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
+            PreparedStatement ps;
+                    String sql="Update professionals set status=?,salary=?,total_services=? where id="+id;
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1,"busy");
+                    ps.setString(2,salary);
+                    ps.setString(3,num_services);
+                    ps.executeUpdate();
+                    
+                    retval = true;
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return retval;           
+    }
     
-    
+    public boolean updateProfRating(String id,String rating)
+    {
+       boolean retval=false;
+        try{
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
+            PreparedStatement ps;
+                    String sql="Update professionals set rating=? where id="+id;
+                    ps = conn.prepareStatement(sql);
+                    ps.setString(1,rating);
+                    ps.executeUpdate();
+                    
+                    retval = true;
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return retval;           
+    }
 }
