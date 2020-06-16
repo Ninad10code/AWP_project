@@ -46,7 +46,7 @@ public class RegisterProfessionalServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+
                 String name = request.getParameter("name");
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
@@ -63,17 +63,26 @@ public class RegisterProfessionalServlet extends HttpServlet {
                 out.println("professionlid=");
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-            
+<<<<<<< Updated upstream
+
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+=======
+
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+>>>>>>> Stashed changes
                 PreparedStatement ps;
-                    
+
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery("select count(*) from professionals");
                     rs.next();
                     //int totalrows=rs.getInt("count(*)");
-                    
+<<<<<<< Updated upstream
+
+=======
+
+>>>>>>> Stashed changes
                     String sql="insert into professionals(username,name,password,profession,email,mob_no,address,gender,register,status,rating,service_id) values(?,?,?,?,?,?,?,?,?,?,?,?)";
-                    
+
                     ps = conn.prepareStatement(sql);
                     ps.setString(1,username);
                     ps.setString(2,name);
@@ -101,10 +110,10 @@ public class RegisterProfessionalServlet extends HttpServlet {
                    out.println(ex.getMessage());
                 Logger.getLogger(RegisterProfessionalServlet.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
-                
+
                 out.println(ex.getMessage());
                 Logger.getLogger(RegisterProfessionalServlet.class.getName()).log(Level.SEVERE, null, ex);
-            } 
+            }
         }
     }
 

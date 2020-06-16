@@ -9,7 +9,7 @@ package datapack;
  * @author kumar
  */
 public class Services {
-    
+
     private int id;
     private String name;
     private int price;
@@ -64,6 +64,6 @@ public class Services {
     public void setPackage_id(int package_id) {
         this.package_id = package_id;
     }
-    
-    
+
+
 }

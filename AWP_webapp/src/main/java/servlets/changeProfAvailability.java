@@ -42,7 +42,7 @@ public class changeProfAvailability extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-       
+
             /* TODO output your page here. You may use following sample code. */
             String value = request.getParameter("value");
             String currentstatus;
@@ -56,8 +56,8 @@ public class changeProfAvailability extends HttpServlet {
             request.setAttribute("value", value);
             try{
                 currentstatus=profserv.changeAvailability(Integer.parseInt(value));
-                
-                
+
+
                     if(currentstatus.equals("busy"))
                     {
                         request.setAttribute("message","Availability status changed from FREE TO BUSY");
@@ -69,14 +69,14 @@ public class changeProfAvailability extends HttpServlet {
                         request.setAttribute("message","Availability status changed from BUSY TO FREE");
                         aqserv.push(aq);
                     }
-                
+
                 request.getRequestDispatcher("/professionalHomePage.jsp").forward(request, response);
             }
             catch(Exception e)
             {
                 out.println(e.getMessage());
             }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

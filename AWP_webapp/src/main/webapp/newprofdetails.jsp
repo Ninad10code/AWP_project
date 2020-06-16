@@ -8,7 +8,7 @@
 <%@page import="datapack.Professionals"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<jsp:include page="header.jsp"/> 
+<jsp:include page="header.jsp"/>
 <script>
     var val1,val2;
     function newprofs(val1,val2) {
@@ -37,17 +37,17 @@
       </tr>
     </thead>
     <tbody>
-        
-       
-        
+
+
+
         <%
             List<Professionals> profli = (List<Professionals>)request.getAttribute("proflist");
-            
+
             for(Professionals e : profli)
             {
-             
+
         %>
-     
+
       <tr>
         <td><%=e.getid()%></td>
         <td><%=e.getname()%></td>
@@ -57,18 +57,17 @@
           <td><a href="/AWP_webapp/Profileservlet?value=<%=e.getid()%>">view...</a></td>
           <td><button class="btn btn-success" onclick="newprofs(<%=e.getid()%>,1)">Approve</button>
           <button class="btn btn-danger" onclick="newprofs(<%=e.getid()%>,0)">Disapprove</button></td>
-          
+
       </tr>
-      
+
       </a>
-     
+
         <%
             }
-            
-         %>   
-            
+
+         %>
+
           </tbody>
     </table>
-    </div>    
- <jsp:include page="footer.jsp"/> 
-
+    </div>
+ <jsp:include page="footer.jsp"/>

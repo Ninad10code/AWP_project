@@ -20,16 +20,16 @@ import java.util.ArrayList;
  */
 public class Ordersservices {
     private final String dbuser = "root";
-    private final String dbpass = "Suruchi@2001";
-    
-    
-  
+    private final String dbpass = "root";
+
+
+
   public void push(Orders order)
   {
-      
+
       try
         {
-              
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
 
@@ -37,31 +37,31 @@ public class Ordersservices {
             String query = "insert into orders values (?,?,?);";
 
             PreparedStatement pstmt = conn.prepareStatement(query);
-           
+
             pstmt.setString(1,Integer.toString(order.getProfessional_id()));
             pstmt.setString(2,Integer.toString(order.getService_id()));
             pstmt.setString(3,Integer.toString(order.getUser_id()));
-         
-            
-            
+
+
+
             pstmt.executeUpdate();
-            
-           
-            
-        } 
+
+
+
+        }
         catch(Exception e)
         {
             System.out.println("Error");
-            
+
         }
   }
-  
+
     public ArrayList<Orders> getOrdersList()
     {
         ArrayList<Orders>OrdersList=new ArrayList<Orders>();
        try
         {
-              
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
 
@@ -70,34 +70,34 @@ public class Ordersservices {
 
             Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(query);
-               
+
                     while(rs.next())
-                    { 
+                    {
                         Orders order=new Orders();
                         order.setProfessional_id(Integer.parseInt(rs.getString("professional_id")));
                         order.setUser_id(Integer.parseInt(rs.getString("user_id")));
                         order.setService_id(Integer.parseInt(rs.getString("service_id")));
-                        
+
                         OrdersList.add(order);
                     }
-            
-           
-            
-        } 
+
+
+
+        }
         catch(Exception e)
         {
             System.out.println("Error");
-            
+
         }
        return OrdersList;
     }
-  
+
     public ArrayList<Orders> getOrdersByUserId(int id)
     {
         ArrayList<Orders>OrdersList=new ArrayList<Orders>();
        try
         {
-              
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
 
@@ -106,35 +106,35 @@ public class Ordersservices {
 
             Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(query);
-               
+
                     while(rs.next())
-                    { 
+                    {
                         Orders order=new Orders();
                         order.setUser_id(id);
                         order.setProfessional_id(Integer.parseInt(rs.getString("professional_id")));
                         order.setService_id(Integer.parseInt(rs.getString("service_id")));
-                        
+
                         OrdersList.add(order);
-                        
+
                     }
-            
-           
-            
-        } 
+
+
+
+        }
         catch(Exception e)
         {
             System.out.println("Error");
-            
+
         }
        return OrdersList;
     }
-      
+
     public ArrayList<Orders> getOrdersByProfId(int id)
     {
         ArrayList<Orders>OrdersList=new ArrayList<Orders>();
        try
         {
-              
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
 
@@ -143,27 +143,27 @@ public class Ordersservices {
 
             Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(query);
-               
+
                     while(rs.next())
-                    { 
+                    {
                         Orders order=new Orders();
                         order.setProfessional_id(id);
                         order.setUser_id(Integer.parseInt(rs.getString("user_id")));
                         order.setService_id(Integer.parseInt(rs.getString("service_id")));
-                        
+
                         OrdersList.add(order);
                     }
-            
-           
-            
-        } 
+
+
+
+        }
         catch(Exception e)
         {
             System.out.println("Error");
-            
+
         }
        return OrdersList;
     }
-  
-  
+
+
 }

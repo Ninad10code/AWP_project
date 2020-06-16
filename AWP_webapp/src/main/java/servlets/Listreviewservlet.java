@@ -34,16 +34,17 @@ public class Listreviewservlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
+        String limit = request.getParameter("value");
+
         Reviews re = new Reviews();
         Reviewservices rserv = new Reviewservices();
-        
+
         ArrayList<Reviews> relist = new ArrayList<Reviews>();
-        relist = rserv.getAllReviews();
-        
-            
+        relist = rserv.getAllReviews(limit);
+
         ServletContext context = getServletContext();
-       
+
         request.setAttribute("reviewlist",relist);
         RequestDispatcher dispatcher = context.getRequestDispatcher("/listreview.jsp");
         dispatcher.forward(request,response);

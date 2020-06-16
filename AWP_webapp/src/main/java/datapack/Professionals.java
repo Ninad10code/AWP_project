@@ -10,7 +10,7 @@ package datapack;
  * @author kumar
  */
 public class Professionals {
-    
+
     private int id;
     private String name;
     private String username;
@@ -26,7 +26,7 @@ public class Professionals {
     private String total_services;
     private String register;
     private int service_id;
-      
+
     public void setid(int id)
     {
         this.id=id;

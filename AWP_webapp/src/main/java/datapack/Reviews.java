@@ -6,12 +6,12 @@
 package datapack;
 
 public class Reviews {
-    
+
     private int id;
     private String name;
     private String comment;
     private String rating;
-    
+
     public int getId() {
         return id;
     }
@@ -43,7 +43,7 @@ public class Reviews {
     public void setRating(String rating) {
         this.rating = rating;
     }
-    
-    
-    
+
+
+
 }

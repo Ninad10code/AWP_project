@@ -17,27 +17,27 @@ import java.sql.*;
  * @author kumar
  */
 public class Professionalservices {
-      
-    
+
+
     private final String dbuser = "root";
-    private final String dbpass = "Suruchi@2001";
+    private final String dbpass = "root";
     ArrayList<Professionals> proflist  = new ArrayList<Professionals>();
-     
-    
+
+
     public  ArrayList<Professionals> getProfessionalsList()
     {
            try{
-            
+
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM professionals where register='true';";
-            
-            
+
+
                 Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(sql);
-               
+
                     while(rs.next())
-                    {   
+                    {
                        Professionals prof = new Professionals();
 
                        prof.setid(Integer.parseInt(rs.getString(1)));
@@ -56,39 +56,39 @@ public class Professionalservices {
                        proflist.add(prof);
 
                     }
-                
-               
+
+
                 }
-           
+
                 catch(Exception e)
                 {
                     System.out.println("failure in connection");
                 }
-           
+
            return proflist;
-            
-        
+
+
     }
-    
-    
+
+
     public Professionals getProfessinalsById(String id)
-    {   
+    {
          Professionals prof = new Professionals();
-        
+
          try{
-            
+
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM professionals WHERE id="+id;
 
-            
-            
+
+
                 Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(sql);
-               
+
                     while(rs.next())
-                    {   
-                      
+                    {
+
 
                        prof.setid(Integer.parseInt(rs.getString(1)));
                        prof.setname(rs.getString(2));
@@ -105,42 +105,42 @@ public class Professionalservices {
                        prof.settotal_services(rs.getString(13));
                        prof.setregister(rs.getString(14));
                        prof.setservice_id(Integer.parseInt(rs.getString(15)));
-                       
+
 
                     }
-                
-               
+
+
                 }
-           
+
                 catch(Exception e)
                 {
                     System.out.println("failure in connection");
                 }
-           
+
            return prof;
-        
-        
-        
+
+
+
     }
-    
-    
+
+
       public  ArrayList<Professionals> getProfessinalsByProfession(String id)
-    {   
+    {
           ArrayList<Professionals> proflist  = new ArrayList<Professionals>();
-        
+
          try{
-            
+
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM professionals WHERE register='true' AND service_id=+"+"'"+id+"'"+";";
 
-            
-            
+
+
                 Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(sql);
-               
+
                     while(rs.next())
-                    {   
+                    {
                       Professionals prof = new Professionals();
 
                        prof.setid(Integer.parseInt(rs.getString(1)));
@@ -160,21 +160,21 @@ public class Professionalservices {
                        proflist.add(prof);
 
                     }
-                
-               
+
+
                 }
-           
+
                 catch(Exception e)
                 {
                     System.out.println("failure in connection");
                 }
-           
+
            return proflist;
-        
-        
-        
+
+
+
     }
-    
+
     public Professionals login(String name,String password)
     {
         Professionals prof=null;
@@ -201,14 +201,14 @@ public class Professionalservices {
             }
             return prof;
     }
- 
+
     public boolean UpdateDetails(Professionals prof)
     {
         boolean retval=false;
          String id;
          id = Integer.toString(prof.getid());
         try{
-            
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
             PreparedStatement ps;
@@ -235,11 +235,12 @@ public class Professionalservices {
         }
         return retval;
     }
+
     public boolean updateProfStats(String id,String salary,String num_services)
     {
         boolean retval=false;
         try{
-            
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
             PreparedStatement ps;
@@ -249,20 +250,20 @@ public class Professionalservices {
                     ps.setString(2,salary);
                     ps.setString(3,num_services);
                     ps.executeUpdate();
-                    
+
                     retval = true;
         }catch(Exception e)
         {
             e.printStackTrace();
         }
-        return retval;           
+        return retval;
     }
-    
+
     public boolean updateProfRating(String id,String rating)
     {
        boolean retval=false;
         try{
-            
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
             PreparedStatement ps;
@@ -270,29 +271,29 @@ public class Professionalservices {
                     ps = conn.prepareStatement(sql);
                     ps.setString(1,rating);
                     ps.executeUpdate();
-                    
+
                     retval = true;
         }catch(Exception e)
         {
             e.printStackTrace();
         }
-        return retval;           
+        return retval;
     }
     public String changeAvailability(int id)
     {
         String currentstatus,status="free";
         try{
                 Class.forName("com.mysql.jdbc.Driver");
-            
+
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 PreparedStatement ps;
-             
+
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT status FROM professionals WHERE id="+Integer.toString(id));
                 if(rs.next())
                 {
                     currentstatus=rs.getString(1);
-                
+
                     if(currentstatus.equals("free"))
                     {
                         status="busy";
@@ -303,7 +304,7 @@ public class Professionalservices {
                     }
                 }
                 String sql="UPDATE professionals set status='"+status+"' WHERE id="+Integer.toString(id);
-                ps = conn.prepareStatement(sql);  
+                ps = conn.prepareStatement(sql);
                 int i = ps.executeUpdate();
             }
             catch(Exception e)
@@ -317,18 +318,18 @@ public class Professionalservices {
     {
         Professionals prof = new Professionals();
            try{
-            
+
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
                 String sql = "SELECT * FROM professionals WHERE username='"+name+"'";
-            
-            
+
+
                 Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(sql);
-               
+
                     while(rs.next())
-                    {   
-                       
+                    {
+
 
                        prof.setid(Integer.parseInt(rs.getString(1)));
                        prof.setname(rs.getString(2));
@@ -345,19 +346,19 @@ public class Professionalservices {
                        prof.setregister(rs.getString(14));
                        prof.setservice_id(Integer.parseInt(rs.getString(15)));
                     }
-                
-               
+
+
                 }
-           
+
                 catch(Exception e)
                 {
                     System.out.println("failure in connection");
                 }
-           
+
            return prof;
-            
-        
+
+
     }
 
-    
+
 }

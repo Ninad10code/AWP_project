@@ -31,35 +31,35 @@ public class userservicesservlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    
+
+
     ArrayList<Services> servlist = new ArrayList<Services>();
-    
+
     Serviceservices serv = new Serviceservices();
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-    
-    
-        
+
+
+
         String packageid = request.getParameter("value");
-        
+
         servlist = serv.getServicesByPackageId(packageid);
-        
-         
+
+
             request.setAttribute("servicelist",servlist);
-            
-           ServletContext context = getServletContext(); 
+
+           ServletContext context = getServletContext();
            RequestDispatcher dispatcher = context.getRequestDispatcher("/userservices.jsp");
            dispatcher.forward(request,response);
-        
-        
-        
-        
-        
-        
-   
+
+
+
+
+
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

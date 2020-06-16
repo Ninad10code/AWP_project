@@ -45,7 +45,7 @@ public class LoginProfessional extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
-        
+
             /* TODO output your page here. You may use following sample code. */
             String name=request.getParameter("name");
             String password=request.getParameter("pass");
@@ -54,10 +54,10 @@ public class LoginProfessional extends HttpServlet {
         Professionals prof;
         prof=profserv.login(name, password);
         ServletContext context = getServletContext();
-        
+
         if(prof!=null)
         {
-           
+
             HttpSession session = request.getSession();
             session.setAttribute("username", name);
             session.setAttribute("current", "professional");
@@ -77,7 +77,7 @@ public class LoginProfessional extends HttpServlet {
              RequestDispatcher dispatcher = context.getRequestDispatcher("/indexProfessional.jsp");
                dispatcher.forward(request,response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -10,5 +10,5 @@ package datapack;
  * @author kumar
  */
 public class Admin extends Professionals {
-    
+
 }

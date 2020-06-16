@@ -39,13 +39,13 @@ public class Adminloginservlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         Adminservices ad = new Adminservices();
-        
+
         String name = request.getParameter("name");
         String password = request.getParameter("pass");
         ServletContext context = getServletContext();
-        
+
         if(ad.login(name,password))
         {
            PrintWriter out=response.getWriter();
@@ -63,11 +63,11 @@ public class Adminloginservlet extends HttpServlet {
              RequestDispatcher dispatcher = context.getRequestDispatcher("/indexAdmin.jsp");
                dispatcher.forward(request,response);
         }
-        
-    
-     
-        
-       
+
+
+
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

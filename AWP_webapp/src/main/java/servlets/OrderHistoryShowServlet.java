@@ -44,10 +44,10 @@ public class OrderHistoryShowServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
             /* TODO output your page here. You may use following sample code. */
             PrintWriter out = response.getWriter();
-            
+
             ArrayList<Orders>OrdersList=new ArrayList<Orders>();
             ArrayList<Professionals>proflist=new ArrayList<Professionals>();
             ArrayList<Services>servlist=new ArrayList<Services>();
@@ -60,13 +60,13 @@ public class OrderHistoryShowServlet extends HttpServlet {
             Orders order=new Orders();
             Ordersservices oserv=new Ordersservices();
             Services serv=new Services();
-            Serviceservices sserv= new Serviceservices(); 
-            
+            Serviceservices sserv= new Serviceservices();
+
             String current=session.getAttribute("current").toString();
             int id;
             String name;
             String destpage="/OrdersHistoryInfo.jsp";
-            
+
             if(current.equals("user"))
             {
                 name=session.getAttribute("username").toString();

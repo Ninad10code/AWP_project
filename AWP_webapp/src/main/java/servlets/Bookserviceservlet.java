@@ -37,19 +37,19 @@ public class Bookserviceservlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(true);
         try{
-            
+
             Services s = new Services();
-        
-        Serviceservices serv = new Serviceservices(); 
-        
+
+        Serviceservices serv = new Serviceservices();
+
         String id = request.getParameter("value");
         request.setAttribute("service_id", id);
         s = serv.getServicesByServiceId(id);
-        
+
         request.setAttribute("serv", s);
         if(session.getAttribute("username") == null)
             {
@@ -57,29 +57,29 @@ public class Bookserviceservlet extends HttpServlet {
                 ServletContext context = getServletContext();
              RequestDispatcher dispatcher = context.getRequestDispatcher("/indexuser.jsp");
              dispatcher.forward(request,response);
-            } 
+            }
         else{
             ServletContext context = getServletContext();
          RequestDispatcher dispatcher = context.getRequestDispatcher("/confirmbooking.jsp");
          dispatcher.forward(request,response);
         }
-        
-        
+
+
         }
         catch(Exception e)
         {
             out.println(e.getMessage());
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-     
+
+
+
+
+
+
+
+
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -35,26 +35,26 @@ public class GetAllProfessionalsServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String val = request.getParameter("value");
-        
+
         Professionalservices profserv = new Professionalservices();
         ArrayList<Professionals> proflist = new  ArrayList<Professionals>();
-        
+
         if(val.equals("default"))
-        {    
+        {
             proflist = (ArrayList<Professionals>)profserv.getProfessionalsList();
         }
         else
         {
             proflist = (ArrayList<Professionals>)profserv.getProfessinalsByProfession(val);
-        }    
+        }
         request.setAttribute("proflist", proflist);
-          
+
         ServletContext context = getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/profdetails.jsp");
         dispatcher.forward(request,response);
-       
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

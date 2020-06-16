@@ -36,15 +36,15 @@ public class LogoutProfessional extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
-             Cookie ck=new Cookie("name","");  
-            ck.setMaxAge(0);  
+
+             Cookie ck=new Cookie("name","");
+            ck.setMaxAge(0);
             response.addCookie(ck);
             HttpSession session = request.getSession();
             session.removeAttribute("username");
             session.removeAttribute("current");
-            out.print("<h1>you are successfully logged out!</h1>");  
-            request.getRequestDispatcher("indexProfessional.jsp").include(request, response); 
+            out.print("<h1>you are successfully logged out!</h1>");
+            request.getRequestDispatcher("indexProfessional.jsp").include(request, response);
         }
     }
 

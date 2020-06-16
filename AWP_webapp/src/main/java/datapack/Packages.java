@@ -10,7 +10,7 @@ package datapack;
  * @author kumar
  */
 public class Packages {
-    
+
     private int id;
     private String name;
     private String image_url;
@@ -38,7 +38,7 @@ public class Packages {
     public void setImage_url(String image_url) {
         this.image_url = image_url;
     }
-    
-    
-    
+
+
+
 }

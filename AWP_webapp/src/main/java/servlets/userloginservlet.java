@@ -35,49 +35,55 @@ public class userloginservlet extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * 
-     * 
-     * 
+     *
+     *
+     *
      */
-    
+
     Packageservices pserv = new Packageservices();
     ArrayList<Packages> packlist = new ArrayList<Packages>();
-    
-    
-    
+
+
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         Users u=new Users();
          Userservices ud = new Userservices();
-        
+
         String name = request.getParameter("name");
         String password = request.getParameter("pass");
-        
+
         ServletContext context = getServletContext();
-        
+
         PrintWriter out=response.getWriter();
-        
+
         if(ud.login(name,password))
         {
-           
+
             HttpSession session = request.getSession(true);
             session.setAttribute("username", name);
             session.setMaxInactiveInterval(30*60);
             session.setAttribute("current", "user");
+<<<<<<< Updated upstream
             u=ud.getUsersByName(name);
             request.setAttribute("user_id", u.getid());
             
+=======
+
+
+
+>>>>>>> Stashed changes
             String id = request.getParameter("value");
             session.setAttribute("current_id", id);
             if(!id.equals("0"))
-            {  
+            {
                 if(session.getAttribute("previous").toString().equals("bookingPage"))
                 {
                     Services s = new Services();
 
-                Serviceservices serv = new Serviceservices(); 
+                Serviceservices serv = new Serviceservices();
 
 
                 request.setAttribute("service_id", id);
@@ -91,12 +97,12 @@ public class userloginservlet extends HttpServlet {
                 }
             }
             else{
-                
- 
+
+
            RequestDispatcher dispatcher = context.getRequestDispatcher("/userhomepage.jsp");
                dispatcher.forward(request,response);
             }
-        
+
         }
         else
         {
@@ -104,13 +110,13 @@ public class userloginservlet extends HttpServlet {
              RequestDispatcher dispatcher = context.getRequestDispatcher("/indexuser.jsp");
                dispatcher.forward(request,response);
         }
-        
-    
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

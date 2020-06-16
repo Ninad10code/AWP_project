@@ -45,28 +45,34 @@ public class Profileservlet extends HttpServlet {
          else{
              id1=request.getAttribute("value").toString();
          }
-        
+
         Professionalservices profserv = new Professionalservices();
         Professionals prof = new Professionals();
-        
+<<<<<<< Updated upstream
+
         prof = profserv.getProfessinalsById(id1);
-        
+
+=======
+
+        prof = profserv.getProfessinalsById(id);
+
+>>>>>>> Stashed changes
         if(prof==null)out.println("prof is null");
         else{
-        request.setAttribute("prof", prof);  
+        request.setAttribute("prof", prof);
         ServletContext context = getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/professionalprofilepage.jsp");
         dispatcher.include(request,response);}
-       
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

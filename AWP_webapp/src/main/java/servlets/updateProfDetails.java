@@ -40,7 +40,7 @@ public class updateProfDetails extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            
+
                 String id=request.getParameter("id");
                 String name=request.getParameter("name");
                 String username=request.getParameter("username");
@@ -73,7 +73,7 @@ public class updateProfDetails extends HttpServlet {
                     out.print("<h1>There is a problem in updating Record.</h1>");
                     }
                 //}
-                
+
         }
         catch(Exception e)
         {

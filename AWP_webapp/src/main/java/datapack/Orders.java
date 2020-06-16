@@ -13,7 +13,7 @@ public class Orders {
     private int professional_id;
     private int service_id;
     private int user_id;
-    
+
     public int getProfessional_id() {
         return professional_id;
     }
@@ -29,7 +29,7 @@ public class Orders {
     public void setService_id(int user_id) {
         this.service_id = user_id;
     }
-    
+
     public int getUser_id() {
         return user_id;
     }

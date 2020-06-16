@@ -33,7 +33,7 @@ public class Adminlogoutservlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         HttpSession session = request.getSession(false);
         session.removeAttribute("username");
         session.removeAttribute("previous");
@@ -43,8 +43,8 @@ public class Adminlogoutservlet extends HttpServlet {
          request.setAttribute("logoutmessage","successfully logged out");
          RequestDispatcher dispatcher = context.getRequestDispatcher("/userhomepage.jsp");
          dispatcher.forward(request,response);
-        
-      
+
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

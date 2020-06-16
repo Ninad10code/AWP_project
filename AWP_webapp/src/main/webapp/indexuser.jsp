@@ -23,11 +23,11 @@
     <title>Index</title>
 </head>
 <body>
-    
+
 
     <h1>Welcome to Pro-Serv</h1>
-    <%  
-        
+    <%
+
     String service_id="0";
     try{
     service_id=request.getAttribute("service_id").toString();
@@ -53,7 +53,7 @@
             <br>
             </span align="center"><label for="page" id="head">Lets get started</label>
             <br>
-            
+
             <form action="userloginservlet?value=<%=service_id %>" method ="post">
             <label for="username">Username</label>
             <input type="text" name="name" id="username" placeholder="Username" required>
@@ -65,7 +65,7 @@
             <p style="color: greenyellow">${success_message}</p>
              <p style="color:red">${message}</p>
               <p style="color:greenyellow">${logoutmessage}</p>
-             
+
             </form>
             <!-- <br>
             <div class="signUP">
@@ -83,7 +83,7 @@
     <!-- <footer>
         &copy; Pro-Serv 2022
     </footer> -->
-    
+
 
 
 

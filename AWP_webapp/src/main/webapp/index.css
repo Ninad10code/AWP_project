@@ -3,7 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : 10 Apr, 2020, 2:07:58 PM
     Author     : Lenovo
 */
@@ -13,13 +13,13 @@ body{
     background-image: linear-gradient(95deg,#2471A3,#7D3C98 80%);
     padding-right: 30px;
     padding-left: 30px;
-    
+
     /* padding-bottom: 40px; */
     background-repeat: round;
     /* background-size: cover; */
     /* background-attachment: scroll; */
 
-    
+
 }
 h1{
     font-family: 'Comic Neue', cursive;
@@ -39,7 +39,7 @@ h1{
     /* text-align: center; */
     width: 300px;
     padding-top: 0ch;
-    
+
 }
 
 #current{
@@ -106,7 +106,7 @@ h1{
     font-family: 'Ubuntu', sans-serif;
     text-justify: auto;
     text-align: center;
-    
+
 
 }
 .extra{
@@ -114,7 +114,7 @@ h1{
 }
 #head{
     text-align: center;
-    
+
 }
 label{
     color: #1C2833;

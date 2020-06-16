@@ -50,8 +50,8 @@ public class NewProfessionalsApplications extends HttpServlet {
                 Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(sql);
                 while(rs.next())
-                {   
-                    
+                {
+
                     Professionals prof = new Professionals();
                        prof.setid(Integer.parseInt(rs.getString(1)));
                        prof.setname(rs.getString(2));
@@ -67,13 +67,13 @@ public class NewProfessionalsApplications extends HttpServlet {
                        prof.settotal_services(rs.getString(13));
                        prof.setservice_id(Integer.parseInt(rs.getString(15)));
                     proflist.add(prof);
-                   
+
                 }
                 request.setAttribute("proflist", proflist);
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher("/newprofdetails.jsp");
                 dispatcher.forward(request,response);
-                
+
             }
             catch(Exception e)
             {

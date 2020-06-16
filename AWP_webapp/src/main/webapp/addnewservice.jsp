@@ -6,16 +6,16 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<jsp:include page="header.jsp"/> 
-        
+<jsp:include page="header.jsp"/>
+
 <style>
          #package_head{
-    
+
         border-radius: 5px;
         text-align: center;
-    
+
     }
-</style>    
+</style>
 
         <br>
         <br>
@@ -23,15 +23,15 @@
             <%
                 String package_id = request.getParameter("package_id");
             %>
-            
-            
-            
+
+
+
             <div class="p-3 bg-secondary text-white" id="package_head">
                 <h4>Service Details</h4>
             </div>
-    
+
             <form action="fileuploadservlet?package_id=<%=package_id%>" method="post" enctype="multipart/form-data">
-                
+
                  <div class="form-group">
                     <label for="service_name">Service Name:</label>
                     <input type="text" id="service_name" class="form-control" placeholder="Enter Name" name="service_name">
@@ -44,20 +44,20 @@
                     <label for="des">Description:</label>
                     <input type="text" class="form-control" id="des" placeholder="Enter Description" name="description">
                  </div>
-                
-                <div class="form-group"> 
+
+                <div class="form-group">
                     <label for="servfile">Service image:</label>
                     <input type="file" id="servfile" name="file" />
-                </div>    
-                
+                </div>
+
                  <button type="submit" class="btn btn-primary">Add Service</button>
-            </form>   
-            
+            </form>
+
         </div>
         <br>
-        
-        <%if(request.getAttribute("message")!=null){%>   
+
+        <%if(request.getAttribute("message")!=null){%>
          <div class="alert alert-info">${message}</div>
         <%}%>
-        
-     <jsp:include page="footer.jsp"/> 
+
+     <jsp:include page="footer.jsp"/>

@@ -45,7 +45,7 @@ public class NewProfApprovalServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+
             String id = request.getParameter("value");
             String approve=request.getParameter("approve");
             Allotmentqueue aq = new Allotmentqueue();
@@ -55,18 +55,18 @@ public class NewProfApprovalServlet extends HttpServlet {
             prof=profserv.getProfessinalsById(id);
         try{
             /* TODO output your page here. You may use following sample code. */
-            
-            
+
+
             Class.forName("com.mysql.jdbc.Driver");
-            
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
             PreparedStatement ps;
             if(approve.equals("1"))
             {
                 String sql="Update professionals set register='true' where id="+id;
                 ps = conn.prepareStatement(sql);
                 int i = ps.executeUpdate();
-                
+
                 aq.setProfessional_id(prof.getid());
                 aq.setService_id(prof.getservice_id());
                 aqserv.push(aq);
@@ -77,12 +77,12 @@ public class NewProfApprovalServlet extends HttpServlet {
                 ps = conn.prepareStatement(sql);
                 int i = ps.executeUpdate();
             }
-            
+
                 ServletContext context = getServletContext();
                 RequestDispatcher dispatcher = context.getRequestDispatcher("/NewProfessionalsApplications");
                 dispatcher.forward(request,response);
-                
-            
+
+
         }catch(Exception e)
         {
             out.println("Error "+e.getMessage());

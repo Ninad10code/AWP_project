@@ -8,12 +8,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="SignUp.css">
     <title>Sign Up</title>
-                <script type="text/javascript">  
+                <script type="text/javascript">
 
 function formValidation()
 {
@@ -37,9 +37,9 @@ function formValidation()
 
                             return true;
                         }
-                    } 
-                
-                
+                    }
+
+
             }
 
         }
@@ -149,7 +149,7 @@ function validate_mail(mail)
         return false;
     }
 }
-  
+
 function myFunction() {
   var x = document.getElementById("password");
   if (x.type === "password") {
@@ -166,17 +166,17 @@ function myFunction() {
         <div class="contentUser">
 
             <form action="userregisterservlet" method="post" name="User_registration"  onsubmit="return formValidation()">
-            
+
             <label for="name">Name</label>
             <div class="inputField"><input type="text" name="name" id="field" placeholder="Name" required></div>
             <br>
             <label for="username">Username</label>
-            <div class="inputField"><input type="text" name="username" id="field" placeholder="Username" required></div>    
+            <div class="inputField"><input type="text" name="username" id="field" placeholder="Username" required></div>
             <br>
             <label for="password">Password</label>
             <div class="inputField"><input type="password" name="password" id="password" placeholder="Password" required>
             </div>
-            <input type="checkbox" onclick="myFunction()">Show Password 
+            <input type="checkbox" onclick="myFunction()">Show Password
             <br>
             <%--<label for="name">Re-enter Password</label>
             <div class="inputField"><input type="password" name="password2" id="field" placeholder="Confirm Password" required></div>
@@ -186,10 +186,10 @@ function myFunction() {
             <div class="inputField"><input type="tel" name="mob_no" id="field"  placeholder="Mobile no" required></div>
             <br>
             <label for="email">E-mail</label>
-            <div class="inputField"><input type="text" name="email" id="field" placeholder="e-mail" required></div>    
+            <div class="inputField"><input type="text" name="email" id="field" placeholder="e-mail" required></div>
             <br>
             <label for="gender">Gender</label>
-            
+
             Male
             <input type="radio" name="gender" value = "M" >
             Female
@@ -206,12 +206,12 @@ function myFunction() {
             <br>
             <a href="index.jsp"><button>Back</button></a>
             <button type="submit"  id="button">submit</button>
-            
+
             <p style="color: red">${error_message}</p>
-            
+
             </form>
         </div>
     </div>
-            
+
 </body>
 </html>

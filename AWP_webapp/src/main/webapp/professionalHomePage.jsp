@@ -14,9 +14,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-           
+
         <%
-            
+
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/Profileservlet");
                 dispatcher.forward(request, response);
         %>
@@ -27,7 +27,7 @@
               <button><a href="updateProfessional.jsp?id=<%=id%>">Change Status</a></button>
             </div>
             <div class="col-sm">
-                <% 
+                <%
                     String id;
                     id=(String)request.getAttribute("value");
                 %>

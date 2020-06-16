@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : professionalSignUp
     Created on : 10 Apr, 2020, 2:19:17 PM
     Author     : Lenovo
@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="SignUp.css">
     <title>Sign Up</title>
-                    <script type="text/javascript">  
+                    <script type="text/javascript">
 
 function formValidation()
 {
@@ -36,9 +36,9 @@ function formValidation()
 
                             return true;
                         }
-                    } 
-                
-                
+                    }
+
+
             }
 
         }
@@ -155,39 +155,39 @@ function myFunction() {
   } else {
     x.type = "password";
   }
-} 
+}
 </script>
 </head>
 <body>
     <h1>Let's get started!</h1>
-    
+
     <div class="main">
-        
+
         <div class="contentProfessional">
             <form method="post" action="RegisterProfServlet" onsubmit="return formValidation()" name="Prof_registration">
             <label for="name">Name</label>
             <div class="inputField"><input type="text" name="name" id="name" placeholder="Name" required></div>
             <br>
             <label for="username">Username</label>
-            <div class="inputField"><input type="text" name="username" id="username" placeholder="Username" required></div>    
+            <div class="inputField"><input type="text" name="username" id="username" placeholder="Username" required></div>
             <br>
             <label for="password">Password</label>
             <div class="inputField"><input type="password" name="password" id="password" placeholder="Password" required></div>
             <br>
-            <input type="checkbox" onclick="myFunction()">Show Password 
+            <input type="checkbox" onclick="myFunction()">Show Password
             <br>
             <span id="errorpass"></span>
             <br>
 
             <label for="mobilenumber">Mobile no.</label>
             <div class="inputField"><input type="tel" name="mobilenumber" id="mobilenumber" pattern="[0-9]{10}" placeholder="Mobile no" required ></div>
-   
+
             <br>
             <label for="email">E-mail</label>
-            <div class="inputField"><input type="text" name="email" id="email" placeholder="E-mail" required></div>    
+            <div class="inputField"><input type="text" name="email" id="email" placeholder="E-mail" required></div>
             <br>
             <label for="profession">Profession</label>
-            <div class="inputField"><input type="text" name="profession" id="profession" placeholder="Profession e.g.Room cleaner" required></div>    
+            <div class="inputField"><input type="text" name="profession" id="profession" placeholder="Profession e.g.Room cleaner" required></div>
             <br>
              <label for="cars">Choose the profession:</label>
 
@@ -203,11 +203,11 @@ function myFunction() {
               <option value="8">Music Tutor</option>
               <option value="9">Yoga Tutor</option>
               <option value="10">Art Tutor</option>
-            </select> 
+            </select>
             <br>
             <br>
             <label for="gender">Gender</label>
-            
+
             Male
             <input type="radio" name="gender" value="male" required >
             Female
@@ -223,7 +223,7 @@ function myFunction() {
             <br>
             <br>
             <a href="indexProfessional.jsp"><button>Back</button></a>
-            
+
             <input type="submit" value="Submit" id="button">
             </form>
         </div>

@@ -10,7 +10,7 @@ package datapack;
  * @author kumar
  */
 public class Allotmentqueue {
-    
+
     private int professional_id;
     private int service_id;
 
@@ -29,6 +29,6 @@ public class Allotmentqueue {
     public void setService_id(int service_id) {
         this.service_id = service_id;
     }
- 
-    
+
+
 }
