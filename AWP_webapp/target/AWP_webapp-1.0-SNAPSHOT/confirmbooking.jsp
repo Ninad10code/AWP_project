@@ -14,83 +14,83 @@
 
 
 <style>
-    
+
     #container{
-        
+
         border: 3px solid gray;
         border-radius: 5px;
-    
-           
+
+
     }
-    
-</style>    
+
+</style>
 
 
 
 <div class="container my-3 p-3 " id="container">
-    
-    
-    
-   
-        
+
+
+
+
+
         <div class="alert alert-primary" style="text-align:center">
-            <h3>Confirm Your Booking</h3>  
-        </div>    
-        
-  
-    
-     
+            <h3>Confirm Your Booking</h3>
+        </div>
+
+
+
+
     <div class="row">
-        
+
         <div class="col-sm-6">
-            
+
             <h5>Your Booking details</h5>
             <p>Service Name:<%=s.getName()%></p>
             <p>Service Cost: Rs.<%=s.getPrice()%></p>
             <p>Service Description:<%=s.getDescription()%></p>
-              
-             
-        </div>    
-        
+
+
+        </div>
+
         <div class="col-sm-6">
-             
-        </div>    
-        
+
+        </div>
+
     </div>
-    
-    
-    
-    
-    
+
+
+
+
+
 
 
     <div class="row">
-    
+
         <div class="col-sm-6 justify-content-center">
-            
+
             <a class="btn btn-success" href="/AWP_webapp/allotprofessionalservlet?value=<%=s.getId() %>">Confirm </a>
-            
-        </div>    
-            
-        <div class="col-sm-6 justify-content-center">  
-            
+
+        </div>
+
+        <div class="col-sm-6 justify-content-center">
+
              <a class="btn btn-danger" href="/AWP_webapp/userservicesservlet?value=<%=s.getPackage_id()%>">Cancel</a>
-            
-        </div>    
-        
+
+        </div>
+
     </div>
-            
-    
-            
-        
-        
+
+
+
+
+
             <h2>  ${error_message} </h2>
-           
-        
-  
-    
-    
-    
+
+
+
+
+
+
 
 </div>
 
@@ -98,4 +98,4 @@
 
 
 
-<jsp:include page="footer.jsp"/> 
+<jsp:include page="footer.jsp"/>

@@ -9,27 +9,27 @@
 <%@page import="datapack.Packages" %>
 <%@page import="java.util.*"%>
 
-<jsp:include page="header.jsp"/> 
+<jsp:include page="header.jsp"/>
 
 
 <style>
     img{
-        
+
         width:100%;
         height:400px;
-        
+
     }
-    
+
     #package_head{
-    
+
         border-radius: 5px;
         text-align: center;
-    
+
     }
-</style>    
+</style>
 
 <div class="container-fluid">
-    
+
     <br>
     <br>
     <div id="demo" class="p-3 carousel slide" data-ride="carousel">
@@ -61,16 +61,16 @@
   <a class="carousel-control-next" href="#demo" data-slide="next">
     <span class="carousel-control-next-icon"></span>
   </a>
-    </div>  
-    
-   
+    </div>
+
+
     <div class="p-3 bg-dark text-white" id="package_head">
         <h1>Our Service Packages</h1>
     </div>
-    
+
     <br>
 
-    
+
     <div class="row">
 
         <%
@@ -78,13 +78,13 @@
             ArrayList<Packages> packlist1 = new ArrayList<Packages>();
             packlist1 = pserv.getAllPackages();
             List<Packages> packlist = (List<Packages>)packlist1;
-            
+
             for(Packages p : packlist)
             {
-             
+
         %>
         <div class="col-sm-4">
-            
+
 
             <div class="card p-3">
                 <img class="card-img-top" src=<%=p.getImage_url()%> alt="Cardimage" style="width:match-parent; height:300px">
@@ -94,18 +94,17 @@
                 <a href="/AWP_webapp/userservicesservlet?value=<%=p.getId()%>" class="btn btn-primary">See Details</a>
               </div>
             </div>
-            
-        </div> 
-       
+
+        </div>
+
         <%
             }
-            
-         %>  
-         
-    </div>     
+
+         %>
+
+    </div>
 
 
 </div>
 
-<jsp:include page="footer.jsp"/> 
-
+<jsp:include page="footer.jsp"/>

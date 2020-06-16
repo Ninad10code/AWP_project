@@ -186,7 +186,7 @@ public class Userservices {
 
 
    }
-<<<<<<< Updated upstream
+
 
     public Users getUsersById(String id)
     {
@@ -232,12 +232,4 @@ public class Userservices {
     }
 
 
-
-=======
-
-
-
-
-
->>>>>>> Stashed changes
 }

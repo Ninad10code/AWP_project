@@ -63,24 +63,14 @@ public class RegisterProfessionalServlet extends HttpServlet {
                 out.println("professionlid=");
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-<<<<<<< Updated upstream
-
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
-=======
-
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
->>>>>>> Stashed changes
                 PreparedStatement ps;
 
                     Statement stmt = conn.createStatement();
                     ResultSet rs = stmt.executeQuery("select count(*) from professionals");
                     rs.next();
                     //int totalrows=rs.getInt("count(*)");
-<<<<<<< Updated upstream
 
-=======
-
->>>>>>> Stashed changes
                     String sql="insert into professionals(username,name,password,profession,email,mob_no,address,gender,register,status,rating,service_id) values(?,?,?,?,?,?,?,?,?,?,?,?)";
 
                     ps = conn.prepareStatement(sql);

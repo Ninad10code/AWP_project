@@ -20,15 +20,15 @@
         login_logout="Login";
         option4="";
     }
-   
+
         String currentuser=(String)session.getAttribute("current");
         if(currentuser!=null)
         {
-            
+
             if(currentuser.equals("professional"))
             {
                 String id;
-            
+
                 id=session.getAttribute("current_id").toString();
                 link1="/AWP_webapp/updateProfessional.jsp?id="+id;
                 link2="/AWP_webapp/changeProfAvailability?value="+id;
@@ -41,7 +41,7 @@
                 home="/AWP_webapp/adminhomepage.jsp";
             }
         }
-        
+
 %>
 
 <!DOCTYPE html>
@@ -78,8 +78,8 @@
         <a class="nav-link" href="/AWP_webapp/OrderHistoryShowServlet"><%=option4%></a>
       </li>
     </ul>
-      
-  </div>  
+
+  </div>
   <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
   <ul class="navbar-nav">
     <li class="nav-item">
@@ -89,5 +89,3 @@
   </ul>
 </div>
 </nav>
-    
- 

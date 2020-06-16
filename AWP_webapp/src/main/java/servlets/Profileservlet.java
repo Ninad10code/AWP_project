@@ -48,15 +48,8 @@ public class Profileservlet extends HttpServlet {
 
         Professionalservices profserv = new Professionalservices();
         Professionals prof = new Professionals();
-<<<<<<< Updated upstream
 
         prof = profserv.getProfessinalsById(id1);
-
-=======
-
-        prof = profserv.getProfessinalsById(id);
-
->>>>>>> Stashed changes
         if(prof==null)out.println("prof is null");
         else{
         request.setAttribute("prof", prof);

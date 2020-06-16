@@ -50,41 +50,14 @@ public class Userregisterservlet extends HttpServlet {
         String mob_no = request.getParameter("mob_no");
         String address = request.getParameter("address");
         String gender = request.getParameter("gender");
-<<<<<<< Updated upstream
-        
-=======
-        String re_password = request.getParameter("re-password");
-
->>>>>>> Stashed changes
+ 
         user.setname(username);
         user.setpassword(password);
         user.setemail(email);
         user.setmob_no(mob_no);
         user.setaddress(address);
         user.setgender(gender);
-<<<<<<< Updated upstream
         
-        
-        
-=======
-
-        if(!password.equals(re_password))
-        {
-
-            request.setAttribute("error_message","both the passwords should be same");
-            request.getRequestDispatcher("/userSignUp.jsp").forward(request, response);
-
-
-        }
-        else if(request.getParameter("agree") == null)
-        {
-            request.setAttribute("error_message","please agree to the terms and conditions");
-            request.getRequestDispatcher("/userSignUp.jsp").forward(request, response);
-        }
-        else
-        {
-
->>>>>>> Stashed changes
             if(!userv.register_user(user).equals("true"))
             {
                 request.setAttribute("error_message",userv.register_user(user));
@@ -94,7 +67,6 @@ public class Userregisterservlet extends HttpServlet {
             {
                 request.setAttribute("success_message","registered successfully please login");
                 request.getRequestDispatcher("/indexuser.jsp").forward(request, response);
-<<<<<<< Updated upstream
             
             }    
         
@@ -107,22 +79,7 @@ public class Userregisterservlet extends HttpServlet {
         
                  
         
-                 
-=======
-
-            }
-
-
-        }
-
-
-
-
-
-
-
-
->>>>>>> Stashed changes
+             
         request.setAttribute("success_message","Successfully registered");
         request.getRequestDispatcher("/result.jsp").forward(request, response);
 

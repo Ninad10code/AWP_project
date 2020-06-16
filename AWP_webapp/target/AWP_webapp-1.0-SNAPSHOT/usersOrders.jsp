@@ -8,7 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page import="datapack.Professionals"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:include page="header.jsp"/> 
+<jsp:include page="header.jsp"/>
 
 <div class="container-fluid">
         <div id="ajax"></div>
@@ -32,7 +32,7 @@
                 Professionals e=profli.get(i);
                 Services s=servlist.get(i);
         %>
-        <tr> 
+        <tr>
             <td><%=e.getname()%></td>
             <td><%=e.getemail()%></td>
             <td><%=e.getmob_no()%></td>
@@ -41,10 +41,10 @@
         </tr>
         <%
             }
-         %>   
-           
-         
+         %>
+
+
           </tbody>
     </table>
-    </div>    
- <jsp:include page="footer.jsp"/> 
+    </div>
+ <jsp:include page="footer.jsp"/>

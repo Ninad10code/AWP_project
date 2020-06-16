@@ -66,15 +66,9 @@ public class userloginservlet extends HttpServlet {
             session.setAttribute("username", name);
             session.setMaxInactiveInterval(30*60);
             session.setAttribute("current", "user");
-<<<<<<< Updated upstream
             u=ud.getUsersByName(name);
             request.setAttribute("user_id", u.getid());
-            
-=======
-
-
-
->>>>>>> Stashed changes
+           
             String id = request.getParameter("value");
             session.setAttribute("current_id", id);
             if(!id.equals("0"))

@@ -32,6 +32,7 @@
             <form action="Reviewservlet" method="post" >
 
                  <div class="form-group">
+                    <input type="hidden" value="<%=prof_id%>" name="profid">
                     <label for="service_name">Name:</label>
                     <input type="text" id="service_name" class="form-control" placeholder="Enter Name" name="name">
                  </div>

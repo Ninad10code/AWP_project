@@ -19,7 +19,7 @@
       <%--<button><a href="updateProfessional.jsp?id=<%=id%>">Change Status</a></button>--%>
     </div>
     <div class="col-sm">
-        <% 
+        <%
             String id;
             id=(String)request.getAttribute("value");
         %>
@@ -34,6 +34,6 @@
     </div>
   </div>
 </div>
-       
+
     </body>
 </html>

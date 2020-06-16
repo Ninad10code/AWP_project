@@ -45,7 +45,7 @@ public class NewProfessionalsApplications extends HttpServlet {
             ArrayList<Professionals> proflist  = new ArrayList<Professionals>();
             try{
             Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
                 String sql = "SELECT * FROM professionals where register='false';";
                 Statement pstmt = conn.createStatement();
                 ResultSet rs = pstmt.executeQuery(sql);
