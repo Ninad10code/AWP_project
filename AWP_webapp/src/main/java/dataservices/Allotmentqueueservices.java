@@ -20,7 +20,7 @@ public class Allotmentqueueservices {
 
 
     private final String dbuser = "root";
-    private final String dbpass = "root";
+    private final String dbpass = "Suruchi@2001";
 
     public Allotmentqueue getTopProfessinal(String id)
     {

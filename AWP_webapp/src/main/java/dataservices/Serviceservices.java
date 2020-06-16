@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class Serviceservices {
 
     private final String dbuser = "root";
-    private final String dbpass = "root";
+    private final String dbpass = "Suruchi@2001";
 
     public ArrayList<Services> getServicesByPackageId(String id)
     {
@@ -117,6 +117,49 @@ public class Serviceservices {
     }
 
 
+        public ArrayList<Services> getAllServices()
+    {
+
+                    
+                
+                        ArrayList<Services> servicesList = new ArrayList<Services>();
+
+         try{
+
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
+                 String sql = "SELECT * FROM services";
+
+
+
+                Statement pstmt = conn.createStatement();
+                ResultSet rs = pstmt.executeQuery(sql);
+
+                    while(rs.next())
+                    {
+
+                        Services serv= new Services();
+                        serv.setId(Integer.parseInt(rs.getString(1)));
+                        serv.setName(rs.getString(2));
+                        serv.setPrice(Integer.parseInt(rs.getString(3)));
+                        serv.setDescription(rs.getString(4));
+                        serv.setImage_url(rs.getString(5));
+                        serv.setPackage_id(Integer.parseInt(rs.getString(6)));
+                        servicesList.add(serv);
+
+                    }
+
+
+                }
+
+                catch(Exception e)
+                {
+                    System.out.println("failure in connection");
+                }
+
+           return servicesList;
+
+    }
 
       public boolean register_service(Services serv)
     {

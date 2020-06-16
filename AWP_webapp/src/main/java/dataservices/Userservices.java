@@ -16,7 +16,7 @@ import java.sql.*;
 public class Userservices {
 
     private final String dbuser = "root";
-    private final String dbpass = "root";
+    private final String dbpass = "Suruchi@2001";
      ArrayList<Users> userlist  = new ArrayList<Users>();
 
 
@@ -69,7 +69,7 @@ public class Userservices {
 
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv",dbuser,dbpass);
-                String sql = "SELECT * FROM users WHERE name="+name;
+                String sql = "SELECT * FROM users WHERE name='"+name+"'";
 
 
                 Statement pstmt = conn.createStatement();
