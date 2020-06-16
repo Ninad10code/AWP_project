@@ -69,13 +69,13 @@ public class OrderHistoryShowServlet extends HttpServlet {
 
             if(current.equals("user"))
             {
-                name=session.getAttribute("username").toString();
-                u=userv.getUsersByName(name);
-                id=u.getid();
+                id=Integer.parseInt(session.getAttribute("current_id").toString());
                 OrdersList.clear();
+                id=5;
                 OrdersList=oserv.getOrdersByUserId(id);
                 for(Orders o:OrdersList)
                 {
+                    
                     prof=profserv.getProfessinalsById(Integer.toString(o.getProfessional_id()));
                     proflist.add(prof);
                     serv=sserv.getServicesByServiceId(Integer.toString(o.getService_id()));

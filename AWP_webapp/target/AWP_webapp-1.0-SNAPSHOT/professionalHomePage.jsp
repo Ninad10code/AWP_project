@@ -6,41 +6,58 @@
 
 <%@page import="datapack.Professionals"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--<jsp:include page="header.jsp"/> --%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
+<jsp:include page="header.jsp"/> 
+
 
         <%
+                String id;
 
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/Profileservlet");
-                dispatcher.forward(request, response);
+                id=session.getAttribute("current_id").toString();
+                String link1="/AWP_webapp/updateProfessional.jsp?id="+id;
+                String link2="/AWP_webapp/changeProfAvailability?value="+id;
+                String profile="/AWP_webapp/Profileservlet?value="+id;
         %>
-        <%--
-        <br>
-        <div class="row">
-            <div class="col-sm">
-              <button><a href="updateProfessional.jsp?id=<%=id%>">Change Status</a></button>
-            </div>
-            <div class="col-sm">
-                <%
-                    String id;
-                    id=(String)request.getAttribute("value");
-                %>
-               <button type="button" class="btn btn-outline-primary"><a href="updateProfessional.jsp?id=<%=id%>">update</a></button>
-            </div>
-            <div class="col-sm">
-              <button type="button" class="btn btn-outline-primary"><a href="LogoutProfessional">Logout</a></button>
-            </div>
-            <div class="col-sm">
-              <button type="button" class="btn btn-outline-primary"><a href="/AWP_webapp/changeProfAvailability?value=<%=id%>">Change Availability</a></button>
-              <p style="color:red">${message}</p>
-            </div>
+        
+        <br><br>
+    <div class="container">
+
+    <div class="row">
+
+
+        <div class="col-sm-4">
+
+            <div class="card">
+             <div class="card-header bg-primary text-white">Profile</div>
+             <div class="card-body">Your Information</div>
+             <div class="card-footer card bg-info text-white"><a href=<%=profile%> class="text-white">Click here</a></div>
+           </div>
         </div>
-        <br>--%>
-    </body>
-</html>
+           
+           <div class="col-sm-4">
+             <div class="card">
+             <div class="card-header bg-primary text-white">Update</div>
+             <div class="card-body">Edit your details here</div>
+             <div class="card-footer card bg-info text-white"><a href=<%=link1%> class="text-white">Click here</a>
+             </div>
+
+           </div>
+           </div>
+
+
+        <div class="col-sm-4">
+
+            <div class="card">
+             <div class="card-header bg-primary text-white">Change Status</div>
+             <div class="card-body">Change your Availability here</div>
+             <p style="color:red">${message}</p>
+             <div class="card-footer card bg-info text-white"><a href=<%=link2%> class="text-white">Click here</a></div>
+           </div>
+
+        </div>
+        </div>
+    </div>
+
+</div>
+   <jsp:include page="footer.jsp"/>
+
+        

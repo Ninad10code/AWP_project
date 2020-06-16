@@ -19,7 +19,7 @@ import datapack.Reviews;
 public class Reviewservices {
 
     private final String dbuser = "root";
-    private final String dbpass = "root";
+    private final String dbpass = "Suruchi@2001";
 
      public ArrayList<Reviews> getAllReviews(String limit)
     {

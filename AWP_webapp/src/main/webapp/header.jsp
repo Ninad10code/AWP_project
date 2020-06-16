@@ -8,17 +8,14 @@
 <% String username = (String)session.getAttribute("username");
     String url="/AWP_webapp/adminlogoutservlet";
     String login_logout="Logout";
-    String link1="";
-    String link2="";
-    String option1="";
-    String option2=" ";
+    
     String home="/AWP_webapp/userhomepage.jsp";
-    String option4="Orders History";
+    String option1="Orders History";
     if(username==null){
         username="New User";
         url="/AWP_webapp/indexuser.jsp";
         login_logout="Login";
-        option4="";
+        option1="";
     }
 
         String currentuser=(String)session.getAttribute("current");
@@ -30,11 +27,8 @@
                 String id;
 
                 id=session.getAttribute("current_id").toString();
-                link1="/AWP_webapp/updateProfessional.jsp?id="+id;
-                link2="/AWP_webapp/changeProfAvailability?value="+id;
-                option1="Update Details";
-                option2="Change Availability";
-                home="/AWP_webapp/Profileservlet?value="+id;
+                
+                home="/AWP_webapp/professionalHomePage.jsp";
             }
             else if(currentuser.equals("admin"))
             {
@@ -65,17 +59,12 @@
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
-      <li class="nav-item" id="edit">
-          <a class="nav-link" href="<%=link1%>"><%=option1%></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%=link2%>"><%=option2%></a><p style="color:red">${message}</p>
-      </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="<%=home%>">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/AWP_webapp/OrderHistoryShowServlet"><%=option4%></a>
+        <a class="nav-link" href="/AWP_webapp/OrderHistoryShowServlet"><%=option1%></a>
       </li>
     </ul>
 
