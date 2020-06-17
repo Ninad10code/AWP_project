@@ -80,7 +80,7 @@ public class userloginservlet extends HttpServlet {
                 Serviceservices serv = new Serviceservices();
 
 
-                request.setAttribute("service_id", id);
+                id=request.getParameter("value");
                 s = serv.getServicesByServiceId(id);
 
                 request.setAttribute("serv", s);

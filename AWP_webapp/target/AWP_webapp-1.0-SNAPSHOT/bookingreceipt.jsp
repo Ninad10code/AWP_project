@@ -8,7 +8,14 @@
 
 <%@page import="datapack.*" %>
 <%@page import="java.util.*"%>
-
+<% String current=session.getAttribute("current").toString();
+    if(!current.equals("user"))
+    {
+        ServletContext context = getServletContext();
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
+               dispatcher.forward(request,response);
+    }
+%>
 <jsp:include page="header.jsp"/>
 <%   Services s = (Services) request.getAttribute("serv") ; %>
 <%   Professionals p = (Professionals) request.getAttribute("prof") ; %>

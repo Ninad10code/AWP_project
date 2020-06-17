@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Invalid email/password!!</h1>
+        <h1>You are not allowed to access this page!!</h1>
     </body>
 </html>

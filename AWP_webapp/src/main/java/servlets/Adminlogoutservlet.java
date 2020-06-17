@@ -36,7 +36,7 @@ public class Adminlogoutservlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         session.removeAttribute("username");
-        session.removeAttribute("previous");
+        if(session.getAttribute("previous")!=null)session.removeAttribute("previous");
         session.removeAttribute("current");
         session.removeAttribute("current_id");
          ServletContext context = getServletContext();

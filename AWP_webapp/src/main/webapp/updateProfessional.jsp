@@ -5,6 +5,14 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<% String current=session.getAttribute("current").toString();
+    if(!current.equals("professional"))
+    {
+        ServletContext context = getServletContext();
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
+               dispatcher.forward(request,response);
+    }
+%>
 <%
 String id = session.getAttribute("current_id").toString();
 

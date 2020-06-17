@@ -7,7 +7,14 @@
 <%@page import="java.util.List"%>
 <%@page import="datapack.Professionals"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<% String current=session.getAttribute("current").toString();
+    if(!current.equals("admin"))
+    {
+        ServletContext context = getServletContext();
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
+               dispatcher.forward(request,response);
+    }
+%>
 <jsp:include page="header.jsp"/>
 <script>
     var val1,val2;
