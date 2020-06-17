@@ -68,7 +68,7 @@ public class LoginProfessional extends HttpServlet {
             session.setAttribute("current_id",id);
             request.setAttribute("value",id );
             request.setAttribute("prof_id",Integer.parseInt(id) );
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/Profileservlet");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/professionalHomePage.jsp");
                 dispatcher.forward(request, response);
         dispatcher.forward(request, response);
         }

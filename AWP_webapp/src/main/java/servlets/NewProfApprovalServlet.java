@@ -59,7 +59,7 @@ public class NewProfApprovalServlet extends HttpServlet {
 
             Class.forName("com.mysql.jdbc.Driver");
 
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","root");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/proserv","root","Suruchi@2001");
             PreparedStatement ps;
             if(approve.equals("1"))
             {

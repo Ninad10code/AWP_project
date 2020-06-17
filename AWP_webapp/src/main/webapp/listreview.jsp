@@ -7,6 +7,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="datapack.Reviews" %>
 <%@page import="java.util.List" %>
+<% String current=session.getAttribute("current").toString();
+    if(!current.equals("user"))
+    {
+        ServletContext context = getServletContext();
+        RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
+               dispatcher.forward(request,response);
+    }
+%>
 <jsp:include page="header.jsp"/>
 
 <script>

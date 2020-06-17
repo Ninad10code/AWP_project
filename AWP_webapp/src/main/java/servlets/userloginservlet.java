@@ -69,18 +69,18 @@ public class userloginservlet extends HttpServlet {
             u=ud.getUsersByName(name);
             request.setAttribute("user_id", u.getid());
            
-            String id = request.getParameter("value");
+            String id = Integer.toString(u.getid());
             session.setAttribute("current_id", id);
             if(!id.equals("0"))
             {
-                if(session.getAttribute("previous").toString().equals("bookingPage"))
+                if(session.getAttribute("previous")!=null && session.getAttribute("previous").toString().equals("bookingPage"))
                 {
                     Services s = new Services();
 
                 Serviceservices serv = new Serviceservices();
 
 
-                request.setAttribute("service_id", id);
+                id=request.getParameter("value");
                 s = serv.getServicesByServiceId(id);
 
                 request.setAttribute("serv", s);
@@ -89,14 +89,15 @@ public class userloginservlet extends HttpServlet {
                     RequestDispatcher dispatcher = context.getRequestDispatcher("/confirmbooking.jsp");
                    dispatcher.forward(request,response);}
                 }
-            }
+            
             else{
 
 
            RequestDispatcher dispatcher = context.getRequestDispatcher("/userhomepage.jsp");
                dispatcher.forward(request,response);
             }
-
+                
+        }
         }
         else
         {
@@ -104,13 +105,14 @@ public class userloginservlet extends HttpServlet {
              RequestDispatcher dispatcher = context.getRequestDispatcher("/indexuser.jsp");
                dispatcher.forward(request,response);
         }
+        
 
 
 
 
 
 
-
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
