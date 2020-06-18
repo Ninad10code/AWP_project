@@ -6,12 +6,22 @@
 
 <%@page import="datapack.Professionals"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% String current=session.getAttribute("current").toString();
-    if(!current.equals("professional"))
+<% 
+    if(session.getAttribute("current")!=null)
+    {
+        String current=session.getAttribute("current").toString();
+        if(!current.equals("professional"))
+        {
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
+                   dispatcher.forward(request,response);
+        }
+    }
+    else
     {
         ServletContext context = getServletContext();
-        RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
-               dispatcher.forward(request,response);
+            RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
+                   dispatcher.forward(request,response);
     }
 %>
 <jsp:include page="header.jsp"/> 
