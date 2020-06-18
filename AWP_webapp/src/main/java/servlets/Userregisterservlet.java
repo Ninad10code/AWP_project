@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import datapack.Services;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import datapack.Users;
+import dataservices.Serviceservices;
 import dataservices.Userservices;
 import java.io.File;
 import java.sql.Connection;
@@ -58,15 +60,26 @@ public class Userregisterservlet extends HttpServlet {
         user.setaddress(address);
         user.setgender(gender);
         
+        Services s = new Services();
+
+                Serviceservices serv = new Serviceservices();
+
+
+                String id=request.getParameter("value");
+                s = serv.getServicesByServiceId(id);
+                request.setAttribute("service_id",id);
+                request.setAttribute("serv", s);
             if(!userv.register_user(user).equals("true"))
             {
                 request.setAttribute("error_message",userv.register_user(user));
-                request.getRequestDispatcher("/userSignUp.jsp").forward(request, response);
+                request.getRequestDispatcher("/userSignUp.jsp?value="+id).forward(request, response);
             }
             else
             {
+                
+                
                 request.setAttribute("success_message","registered successfully please login");
-                request.getRequestDispatcher("/indexuser.jsp").forward(request, response);
+                request.getRequestDispatcher("/indexuser.jsp?value="+id).forward(request, response);
             
             }    
         

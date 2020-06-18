@@ -33,7 +33,7 @@
     service_id=request.getAttribute("service_id").toString();
     if(service_id==null){
         service_id="0";
-        session.setAttribute("previous", "newLogin");
+        //session.setAttribute("previous", "newLogin");
     }
     }
     catch(Exception e)
@@ -75,7 +75,7 @@
         <br>
         <div class="extra">
             <div class="signUP">
-                New to Pro-Serv ? Join us here <a href="userSignUp.jsp"><button>Sign Up</button></a>
+                New to Pro-Serv ? Join us here <a href="userSignUp.jsp?value=<%=service_id %>"><button>Sign Up</button></a>
             </div>
         </div>
     </main>

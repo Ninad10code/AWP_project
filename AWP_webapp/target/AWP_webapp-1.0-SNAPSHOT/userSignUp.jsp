@@ -161,11 +161,26 @@ function myFunction() {
 </script>
 </head>
 <body>
+    <%
+
+    String service_id="0";
+    try{
+    service_id=request.getParameter("value").toString();
+    if(service_id==null){
+        service_id="0";
+        //session.setAttribute("previous", "newLogin");
+    }
+    }
+    catch(Exception e)
+    {
+        e.printStackTrace();
+    }
+    %>
     <h1>Let's get started!</h1>
     <div class="main">
         <div class="contentUser">
 
-            <form action="userregisterservlet" method="post" name="User_registration"  onsubmit="return formValidation()">
+            <form action="userregisterservlet?value=<%=service_id %>" method="post" name="User_registration"  onsubmit="return formValidation()">
 
             <label for="name">Name</label>
             <div class="inputField"><input type="text" name="name" id="field" placeholder="Name" required></div>

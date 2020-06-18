@@ -58,7 +58,16 @@ public class userloginservlet extends HttpServlet {
         ServletContext context = getServletContext();
 
         PrintWriter out=response.getWriter();
+        
+        Services s = new Services();
 
+                Serviceservices serv = new Serviceservices();
+
+
+                String id=request.getParameter("value");
+                s = serv.getServicesByServiceId(id);
+                request.setAttribute("service_id",id);
+                request.setAttribute("serv", s);
         if(ud.login(name,password))
         {
 
@@ -69,21 +78,14 @@ public class userloginservlet extends HttpServlet {
             u=ud.getUsersByName(name);
             request.setAttribute("user_id", u.getid());
            
-            String id = Integer.toString(u.getid());
-            session.setAttribute("current_id", id);
-            if(!id.equals("0"))
+            String id1 = Integer.toString(u.getid());
+            session.setAttribute("current_id", id1);
+            
+            if(!id1.equals("0"))
             {
                 if(session.getAttribute("previous")!=null && session.getAttribute("previous").toString().equals("bookingPage"))
                 {
-                    Services s = new Services();
-
-                Serviceservices serv = new Serviceservices();
-
-
-                id=request.getParameter("value");
-                s = serv.getServicesByServiceId(id);
-
-                request.setAttribute("serv", s);
+                    
                     if(s==null)out.println("serv is null");
                     else{
                     RequestDispatcher dispatcher = context.getRequestDispatcher("/confirmbooking.jsp");
@@ -91,8 +93,6 @@ public class userloginservlet extends HttpServlet {
                 }
             
             else{
-
-
            RequestDispatcher dispatcher = context.getRequestDispatcher("/userhomepage.jsp");
                dispatcher.forward(request,response);
             }
@@ -102,7 +102,7 @@ public class userloginservlet extends HttpServlet {
         else
         {
              request.setAttribute("message","login Unsuccesfull try again");
-             RequestDispatcher dispatcher = context.getRequestDispatcher("/indexuser.jsp");
+             RequestDispatcher dispatcher = context.getRequestDispatcher("/indexuser.jsp?value="+id);
                dispatcher.forward(request,response);
         }
         
