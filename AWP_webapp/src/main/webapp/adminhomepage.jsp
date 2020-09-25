@@ -3,7 +3,11 @@
     Created on : 04-Apr-2020, 1:04:13 PM
     Author     : kumar
 --%>
+<<<<<<< HEAD
 <% 
+=======
+<%
+>>>>>>> de72908e7504783578a495d2249ce0a8a45f61bc
     if(session.getAttribute("current")!=null)
     {
         String current=session.getAttribute("current").toString();
@@ -11,14 +15,23 @@
         {
             ServletContext context = getServletContext();
             RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
+<<<<<<< HEAD
                dispatcher.forward(request,response);
+=======
+                   dispatcher.forward(request,response);
+>>>>>>> de72908e7504783578a495d2249ce0a8a45f61bc
         }
     }
     else
     {
         ServletContext context = getServletContext();
+<<<<<<< HEAD
         RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
         dispatcher.forward(request, response);
+=======
+            RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
+                   dispatcher.forward(request,response);
+>>>>>>> de72908e7504783578a495d2249ce0a8a45f61bc
     }
     
 %>

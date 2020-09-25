@@ -14,14 +14,23 @@
         {
             ServletContext context = getServletContext();
             RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
+<<<<<<< HEAD
                dispatcher.forward(request,response);
+=======
+                   dispatcher.forward(request,response);
+>>>>>>> de72908e7504783578a495d2249ce0a8a45f61bc
         }
     }
     else
     {
         ServletContext context = getServletContext();
+<<<<<<< HEAD
         RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
         dispatcher.forward(request, response);
+=======
+            RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
+                   dispatcher.forward(request,response);
+>>>>>>> de72908e7504783578a495d2249ce0a8a45f61bc
     }
     
 %>
