@@ -16,7 +16,7 @@ import java.sql.*;
 public class Userservices {
 
     private final String dbuser = "root";
-    private final String dbpass = "Suruchi@2001";
+    private final String dbpass = "MySQL@10";
      ArrayList<Users> userlist  = new ArrayList<Users>();
 
 

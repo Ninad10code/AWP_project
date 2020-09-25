@@ -20,7 +20,7 @@ public class Packageservices {
 
 
     private final String dbuser = "root";
-    private final String dbpass = "Suruchi@2001";
+    private final String dbpass = "MySQL@10";
 
 
     public ArrayList<Packages> getAllPackages()

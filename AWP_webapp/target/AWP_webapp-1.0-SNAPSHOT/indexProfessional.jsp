@@ -18,7 +18,7 @@
     <main>
         <div class="content">
             <div class="tabs">
-                <a href="index.jsp"><div class="tabsData">User</div></a>
+                <a href="indexuser.jsp"><div class="tabsData">User</div></a>
                 <div class="tabsData" id="current">Professional</div>
                 <a href="indexAdmin.jsp"><div class="tabsData">Admin</div></a>
                 <!-- <br> -->

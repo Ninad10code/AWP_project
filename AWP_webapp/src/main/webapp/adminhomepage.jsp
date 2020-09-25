@@ -3,13 +3,24 @@
     Created on : 04-Apr-2020, 1:04:13 PM
     Author     : kumar
 --%>
-<% String current=session.getAttribute("current").toString();
-    if(!current.equals("admin"))
+<% 
+    if(session.getAttribute("current")!=null)
+    {
+        String current=session.getAttribute("current").toString();
+        if(!current.equals("admin"))
+        {
+            ServletContext context = getServletContext();
+            RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
+               dispatcher.forward(request,response);
+        }
+    }
+    else
     {
         ServletContext context = getServletContext();
         RequestDispatcher dispatcher = context.getRequestDispatcher("/ErrorLogin.jsp");
-               dispatcher.forward(request,response);
+        dispatcher.forward(request, response);
     }
+    
 %>
 <jsp:include page="header.jsp"/>
 

@@ -17,7 +17,7 @@ import java.sql.*;
 public class Adminservices {
 
     private final String dbuser = "root";
-    private final String dbpass = "Suruchi@2001";
+    private final String dbpass = "MySQL@10";
 
    public boolean login(String name , String password)
    {
